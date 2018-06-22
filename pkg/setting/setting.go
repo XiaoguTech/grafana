@@ -541,7 +541,11 @@ func (cfg *Cfg) Load(args *CommandLineArgs) error {
 
 	Domain = server.Key("domain").MustString("localhost")
 	HttpAddr = server.Key("http_addr").MustString(DEFAULT_HTTP_ADDR)
-	HttpPort = server.Key("http_port").MustString("3000")
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "4444"
+	}
+	HttpPort = server.Key("http_port").MustString(port)
 	RouterLogging = server.Key("router_logging").MustBool(false)
 
 	EnableGzip = server.Key("enable_gzip").MustBool(false)

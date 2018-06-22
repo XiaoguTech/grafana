@@ -6,8 +6,8 @@ coverage/
 awsconfig
 /.awcache
 /dist
-/public/build
-/public/views/index.html
+# /public/build
+# /public/views/index.html
 /emails/dist
 /public_gen
 /public/vendor/npm
@@ -68,3 +68,4 @@ debug.test
 *.orig
 
 /devenv/dashboards/bulk-testing/*.json
+package-lock.json

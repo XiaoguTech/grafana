@@ -2,11 +2,11 @@ version: "{build}"
 
 os: Windows Server 2012 R2
 
-clone_folder: c:\gopath\src\github.com\grafana\grafana
+clone_folder: C:\Users\ZoKing\Documents\GoProjects\src\github.com\grafana\grafana
 
 environment:
   nodejs_version: "6"
-  GOPATH: C:\gopath
+  GOPATH: C:\Users\ZoKing\Documents\GoProjects
   GOVERSION: 1.10
 
 install:
