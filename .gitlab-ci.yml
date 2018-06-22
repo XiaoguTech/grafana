@@ -1,40 +1,12 @@
-image: ubuntu:latest
-#cache:
-#    paths:
-#        - node_modules/
+image: ruby:latest
 variables:
     HEROKUAPP_NAME: "xg-grafana"
     HEROKU_API_KEY: "32765105-2a48-474b-927c-1f2a99505d59"
 stages:
     - deploy
-#before_script:
-#    - npm install
-# 静态代码检查
-#lint_code:
-#    stage: test
-#    script:
-#        - mpm run jest
-#        - npm run karma
-# build front-end code
-#build_fe:
-#    stage: build
-#    script:
-#        - npm run build
-# link both gitlab & heroku
-link_both:
+deploy:
     stage: deploy
     script:
         - apt-get update -qy
-        - apt-get install -y ruby ruby-dev
-#        - apt-get install -y curl
-#        - gpg --keyserver subkeys.pgp.net --recv-keys B5B7720097BB3B58
-#        - curl -sSL get.rvm.io | bash -s stable
-#        - source ~/.bashrc
-#        - source /usr/local/rvm/scripts/rvm
-#        - rvm list known
-#        - rvm install 2.3.3
-#        - rvm use 2.3.3
-#        - rvm remove 2.0.0
-#        - ruby --version
         - gem install dpl
         - dpl --provider=heroku --app=$HEROKUAPP_NAME --api_key=$HEROKU_API_KEY
