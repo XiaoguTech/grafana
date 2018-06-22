@@ -27,7 +27,7 @@ link_both:
         - apt-get update -qy
         - apt-get install -y ruby ruby-dev
         - apt-get install -y curl
-        - gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+        - gpg --keyserver subkeys.pgp.net --recv-keys B5B7720097BB3B58
         - curl -sSL get.rvm.io | bash -s stable
         - source ~/.bashrc
         - source /usr/local/rvm/scripts/rvm
