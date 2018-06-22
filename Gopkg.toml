@@ -18,6 +18,11 @@
 # [[override]]
 #  name = "github.com/x/y"
 #  version = "2.4.0"
+[metadata.heroku]
+  root-package = "github.com/grafana/grafana"
+  go-version = "go1.10.3"
+  install = ["."]
+  ensure = "false"
 
 ignored = [
   "github.com/grafana/grafana/data/*",
