@@ -24,6 +24,11 @@ func (rs *RenderingService) renderViaPhantomJS(ctx context.Context, opts Opts) (
 
 	url := rs.getURL(opts.Path)
 	binPath, _ := filepath.Abs(filepath.Join(rs.Cfg.PhantomDir, executable))
+	if _, err := os.Stat(binPath); os.IsNotExist(err) {
+		rs.log.Error("executable not found", "executable", binPath)
+		return nil, ErrPhantomJSNotInstalled
+	}
+
 	scriptPath, _ := filepath.Abs(filepath.Join(rs.Cfg.PhantomDir, "render.js"))
 	pngPath := rs.getFilePathForNewImage()
 
@@ -53,7 +58,9 @@ func (rs *RenderingService) renderViaPhantomJS(ctx context.Context, opts Opts) (
 		cmdArgs = append([]string{fmt.Sprintf("--output-encoding=%s", opts.Encoding)}, cmdArgs...)
 	}
 
-	commandCtx, _ := context.WithTimeout(ctx, opts.Timeout+time.Second*2)
+	commandCtx, cancel := context.WithTimeout(ctx, opts.Timeout+time.Second*2)
+	defer cancel()
+
 	cmd := exec.CommandContext(commandCtx, binPath, cmdArgs...)
 	cmd.Stderr = cmd.Stdout
 
