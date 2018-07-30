@@ -1,0 +1,5 @@
+build:
+  language:
+    - go
+run:
+  web: go run build.go setup && go run build.go build
