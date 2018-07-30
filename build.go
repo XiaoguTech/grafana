@@ -38,7 +38,7 @@ var (
 	workingDir            string
 	includeBuildNumber    bool     = true
 	buildNumber           int      = 0
-	binaries              []string = []string{"grafana", "grafana-cli"}
+	binaries              []string = []string{"grafana-server", "grafana-cli"}
 	isDev                 bool     = false
 	enterprise            bool     = false
 )
