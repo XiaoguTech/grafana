@@ -2,4 +2,4 @@ build:
   language:
     - go
 run:
-  web: grafana-server -addr :$PORT
+  web: "grafana-server"
