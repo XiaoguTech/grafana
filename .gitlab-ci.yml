@@ -10,3 +10,5 @@ deploy:
         - apt-get update -qy
         - gem install dpl
         - dpl --provider=heroku --app=$HEROKUAPP_NAME --api_key=$HEROKU_API_KEY
+    only:
+        - master
