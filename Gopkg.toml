@@ -20,6 +20,9 @@
 #  version = "2.4.0"
 [metadata.heroku]
   root-package = "github.com/grafana/grafana"
+  go-version = "1.10.3"
+  install = [ "./pkg/cmd/grafana" ]
+  ensure = false
 
 ignored = [
   "github.com/grafana/grafana/data/*",

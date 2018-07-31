@@ -1,0 +1,6 @@
+build:
+  language:
+    - go
+run:
+  web:
+    - grafana-server
