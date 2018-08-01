@@ -32,7 +32,7 @@ export class LoginCtrl {
       $scope.$watch('loginMode', $scope.loginModeChanged);
 
       if (config.loginError) {
-        $scope.appEvent('alert-warning', ['Login Failed', config.loginError]);
+        $scope.appEvent('alert-warning', ['登录失败', config.loginError]);
       }
     };
 
@@ -68,7 +68,7 @@ export class LoginCtrl {
       $scope.command.oldPassword = 'admin';
 
       if ($scope.command.newPassword !== $scope.command.confirmNew) {
-        $scope.appEvent('alert-warning', ['New passwords do not match', '']);
+        $scope.appEvent('alert-warning', ['两次密码不一致', '']);
         return;
       }
 
