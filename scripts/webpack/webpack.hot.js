@@ -34,7 +34,7 @@ module.exports = merge(common, {
     hot: true,
     port: 3333,
     proxy: {
-      '!/public/build': 'http://localhost:3000'
+      '!/public/build': 'http://localhost:4444'
     }
   },
 
