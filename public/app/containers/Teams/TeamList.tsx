@@ -73,7 +73,7 @@ export class TeamList extends React.Component<Props, any> {
                 <input
                   type="text"
                   className="gf-form-input"
-                  placeholder="Search teams"
+                  placeholder="搜索团队"
                   value={teams.search}
                   onChange={this.onSearchQueryChange}
                 />
@@ -84,7 +84,7 @@ export class TeamList extends React.Component<Props, any> {
             <div className="page-action-bar__spacer" />
 
             <a className="btn btn-success" href="org/teams/new">
-              <i className="fa fa-plus" /> New team
+              <i className="fa fa-plus" /> 创建团队
             </a>
           </div>
 
@@ -93,9 +93,9 @@ export class TeamList extends React.Component<Props, any> {
               <thead>
                 <tr>
                   <th />
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>Members</th>
+                  <th>名字</th>
+                  <th>邮箱</th>
+                  <th>成员</th>
                   <th style={{ width: '1%' }} />
                 </tr>
               </thead>
