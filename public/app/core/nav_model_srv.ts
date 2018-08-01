@@ -72,7 +72,7 @@ export class NavModelSrv {
     var node = {
       text: 'Page not found',
       icon: 'fa fa-fw fa-warning',
-      subTitle: '404 Error',
+      subTitle: '404 错误',
     };
 
     return {

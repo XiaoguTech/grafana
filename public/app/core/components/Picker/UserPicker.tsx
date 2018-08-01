@@ -70,12 +70,12 @@ export class UserPicker extends Component<Props, State> {
           cache={false}
           isLoading={isLoading}
           loadOptions={this.debouncedSearch}
-          loadingPlaceholder="Loading..."
+          loadingPlaceholder="加载中..."
           noResultsText="No users found"
           onChange={this.props.onSelected}
           className={`gf-form-input gf-form-input--form-dropdown ${className || ''}`}
           optionComponent={PickerOption}
-          placeholder="Select user"
+          placeholder="选择用户"
           value={value}
           autosize={true}
         />
