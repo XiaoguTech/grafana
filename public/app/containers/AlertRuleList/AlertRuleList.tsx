@@ -12,12 +12,12 @@ import Highlighter from 'react-highlight-words';
 @observer
 export class AlertRuleList extends React.Component<IContainerProps, any> {
   stateFilters = [
-    { text: 'All', value: 'all' },
-    { text: 'OK', value: 'ok' },
-    { text: 'Not OK', value: 'not_ok' },
-    { text: 'Alerting', value: 'alerting' },
-    { text: 'No Data', value: 'no_data' },
-    { text: 'Paused', value: 'paused' },
+    { text: '全部', value: 'all' },
+    { text: '安全', value: 'ok' },
+    { text: '危险', value: 'not_ok' },
+    { text: '报警', value: 'alerting' },
+    { text: '缺值', value: 'no_data' },
+    { text: '暂停', value: 'paused' },
   ];
 
   constructor(props) {
@@ -63,7 +63,7 @@ export class AlertRuleList extends React.Component<IContainerProps, any> {
                 <input
                   type="text"
                   className="gf-form-input"
-                  placeholder="Search alerts"
+                  placeholder="搜索报警"
                   value={alertList.search}
                   onChange={this.onSearchQueryChange}
                 />
@@ -71,7 +71,7 @@ export class AlertRuleList extends React.Component<IContainerProps, any> {
               </label>
             </div>
             <div className="gf-form">
-              <label className="gf-form-label">States</label>
+              <label className="gf-form-label">状态</label>
 
               <div className="gf-form-select-wrapper width-13">
                 <select className="gf-form-input" onChange={this.onStateFilterChanged} value={alertList.stateFilter}>
@@ -83,14 +83,15 @@ export class AlertRuleList extends React.Component<IContainerProps, any> {
             <div className="page-action-bar__spacer" />
 
             <a className="btn btn-secondary" onClick={this.onOpenHowTo}>
-              <i className="fa fa-info-circle" /> How to add an alert
+              <i className="fa fa-info-circle" /> 如何添加一条报警
             </a>
           </div>
 
           <section>
             <ol className="alert-rule-list">
               {alertList.filteredRules.map(rule => (
-                <AlertRuleItem rule={rule} key={rule.id} search={alertList.search} />
+                <
+                AlertRuleItem rule={rule} key={rule.id} search={alertList.search} />
               ))}
             </ol>
           </section>
@@ -152,7 +153,7 @@ export class AlertRuleItem extends React.Component<AlertRuleItemProps, any> {
             </div>
             <div className="alert-rule-item__text">
               <span className={`${rule.stateClass}`}>{this.renderText(rule.stateText)}</span>
-              <span className="alert-rule-item__time"> for {rule.stateAge}</span>
+              <span className="alert-rule-item__time"> 在 {rule.stateAge}</span>
             </div>
           </div>
           {rule.info && <div className="small muted alert-rule-item__info">{this.renderText(rule.info)}</div>}
@@ -161,12 +162,12 @@ export class AlertRuleItem extends React.Component<AlertRuleItemProps, any> {
         <div className="alert-rule-item__actions">
           <button
             className="btn btn-small btn-inverse alert-list__btn width-2"
-            title="Pausing an alert rule prevents it from executing"
+            title="暂停报警规则避免执行"
             onClick={this.toggleState}
           >
             <i className={stateClass} />
           </button>
-          <a className="btn btn-small btn-inverse alert-list__btn width-2" href={ruleUrl} title="Edit alert rule">
+          <a className="btn btn-small btn-inverse alert-list__btn width-2" href={ruleUrl} title="编辑报警规则">
             <i className="icon-gf icon-gf-settings" />
           </a>
         </div>
