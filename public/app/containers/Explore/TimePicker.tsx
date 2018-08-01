@@ -164,7 +164,7 @@ export default class TimePicker extends PureComponent<any, any> {
         <div className="gf-timepicker-absolute-section">
           <h3 className="section-heading">Custom range</h3>
 
-          <label className="small">From:</label>
+          <label className="small">自:</label>
           <div className="gf-form-inline">
             <div className="gf-form max-width-28">
               <input
@@ -176,7 +176,7 @@ export default class TimePicker extends PureComponent<any, any> {
             </div>
           </div>
 
-          <label className="small">To:</label>
+          <label className="small">至:</label>
           <div className="gf-form-inline">
             <div className="gf-form max-width-28">
               <input
@@ -232,7 +232,7 @@ export default class TimePicker extends PureComponent<any, any> {
             <i className="fa fa-clock-o" />
             <span className="timepicker-rangestring">{rangeString}</span>
             {isUtc ? <span className="gf-timepicker-utc">UTC</span> : null}
-            {refreshInterval ? <span className="text-warning">&nbsp; Refresh every {refreshInterval}</span> : null}
+            {refreshInterval ? <span className="text-warning">&nbsp; 刷新间隔 {refreshInterval}</span> : null}
           </button>
           <button className="btn navbar-button navbar-button--tight timepicker-right" onClick={this.handleClickRight}>
             <i className="fa fa-chevron-right" />
