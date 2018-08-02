@@ -62,7 +62,7 @@ class MetricsPanelCtrl extends PanelCtrl {
   }
 
   private onInitMetricsPanelEditMode() {
-    this.addEditorTab('度量', metricsTabDirective);
+    this.addEditorTab('度量指标', metricsTabDirective);
     this.addEditorTab('时间范围', 'public/app/features/panel/partials/panelTime.html');
   }
 
