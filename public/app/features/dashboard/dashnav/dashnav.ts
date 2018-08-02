@@ -14,9 +14,9 @@ export class DashNavCtrl {
 
     if (this.dashboard.meta.isSnapshot) {
       var meta = this.dashboard.meta;
-      this.titleTooltip = 'Created: &nbsp;' + moment(meta.created).calendar();
+      this.titleTooltip = '创建于: &nbsp;' + moment(meta.created).calendar();
       if (meta.expires) {
-        this.titleTooltip += '<br>Expires: &nbsp;' + moment(meta.expires).fromNow() + '<br>';
+        this.titleTooltip += '<br>失效于: &nbsp;' + moment(meta.expires).fromNow() + '<br>';
       }
     }
   }
@@ -81,7 +81,7 @@ export class DashNavCtrl {
     this.dashboard.addPanel({
       type: 'add-panel',
       gridPos: { x: 0, y: 0, w: 12, h: 9 },
-      title: 'Panel Title',
+      title: '面板标题',
     });
   }
 

@@ -12,11 +12,11 @@ export class ValidationSrv {
   constructor(private $q, private backendSrv) {}
 
   validateNewDashboardName(folderId, name) {
-    return this.validate(folderId, name, 'A dashboard in this folder with the same name already exists');
+    return this.validate(folderId, name, '此文件夹中已存在同名的仪表盘');
   }
 
   validateNewFolderName(name) {
-    return this.validate(0, name, 'A folder or dashboard in the general folder with the same name already exists');
+    return this.validate(0, name, '默认文件夹中已存在同名的仪表盘或文件夹');
   }
 
   private validate(folderId, name, existingErrorMessage) {
@@ -26,14 +26,14 @@ export class ValidationSrv {
     if (name.length === 0) {
       return this.$q.reject({
         type: 'REQUIRED',
-        message: 'Name is required',
+        message: '名称是必需的',
       });
     }
 
     if (folderId === 0 && nameLowerCased === this.rootName) {
       return this.$q.reject({
         type: 'EXISTING',
-        message: 'This is a reserved name and cannot be used for a folder.',
+        message: '这是保留名称，不能用于文件夹命名。',
       });
     }
 
