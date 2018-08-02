@@ -73,6 +73,6 @@ export class CustomVariable implements Variable {
 variableTypes['custom'] = {
   name: 'Custom',
   ctor: CustomVariable,
-  description: 'Define variable values manually',
+  description: '手动定义变量值',
   supportsMulti: true,
 };

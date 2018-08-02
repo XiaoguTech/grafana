@@ -13,22 +13,22 @@ export class VariableEditorCtrl {
     $scope.optionsLimit = 20;
 
     $scope.refreshOptions = [
-      { value: 0, text: 'Never' },
-      { value: 1, text: 'On Dashboard Load' },
-      { value: 2, text: 'On Time Range Change' },
+      { value: 0, text: '从不' },
+      { value: 1, text: '仪表板加载时' },
+      { value: 2, text: '时间区间改变时' },
     ];
 
     $scope.sortOptions = [
-      { value: 0, text: 'Disabled' },
-      { value: 1, text: 'Alphabetical (asc)' },
-      { value: 2, text: 'Alphabetical (desc)' },
-      { value: 3, text: 'Numerical (asc)' },
-      { value: 4, text: 'Numerical (desc)' },
-      { value: 5, text: 'Alphabetical (case-insensitive, asc)' },
-      { value: 6, text: 'Alphabetical (case-insensitive, desc)' },
+      { value: 0, text: '关闭' },
+      { value: 1, text: '按字母顺序排列(升序)' },
+      { value: 2, text: '按字母顺序排列(降序)' },
+      { value: 3, text: '按数值排列(升序)' },
+      { value: 4, text: '按数值排列(降序)' },
+      { value: 5, text: '按字母顺序排列(不区分大小写, 升序)' },
+      { value: 6, text: '按字母顺序排列(不区分大小写, 降序)' },
     ];
 
-    $scope.hideOptions = [{ value: 0, text: '' }, { value: 1, text: 'Label' }, { value: 2, text: 'Variable' }];
+    $scope.hideOptions = [{ value: 0, text: '' }, { value: 1, text: '标签' }, { value: 2, text: '变量' }];
 
     $scope.init = function() {
       $scope.mode = 'list';
@@ -60,13 +60,13 @@ export class VariableEditorCtrl {
       }
 
       if (!$scope.current.name.match(/^\w+$/)) {
-        appEvents.emit('alert-warning', ['Validation', 'Only word and digit characters are allowed in variable names']);
+        appEvents.emit('alert-warning', ['Validation', '变量名中只允许使用单词和数字字符']);
         return false;
       }
 
       var sameName = _.find($scope.variables, { name: $scope.current.name });
       if (sameName && sameName !== $scope.current) {
-        appEvents.emit('alert-warning', ['Validation', 'Variable with the same name already exists']);
+        appEvents.emit('alert-warning', ['Validation', '已存在同名的变量']);
         return false;
       }
 
@@ -76,7 +76,7 @@ export class VariableEditorCtrl {
       ) {
         appEvents.emit('alert-warning', [
           'Validation',
-          'Query cannot contain a reference to itself. Variable: $' + $scope.current.name,
+          '查询不能包含对自身的引用。 变量: $' + $scope.current.name,
         ]);
         return false;
       }
@@ -87,10 +87,10 @@ export class VariableEditorCtrl {
     $scope.validate = function() {
       $scope.infoText = '';
       if ($scope.current.type === 'adhoc' && $scope.current.datasource !== null) {
-        $scope.infoText = 'Adhoc filters are applied automatically to all queries that target this datasource';
+        $scope.infoText = 'Adhoc过滤器会自动应用于所有以此数据源为目标的查询';
         datasourceSrv.get($scope.current.datasource).then(ds => {
           if (!ds.getTagKeys) {
-            $scope.infoText = 'This datasource does not support adhoc filters yet.';
+            $scope.infoText = '此数据源尚不支持adhoc过滤器。';
           }
         });
       }
@@ -102,7 +102,7 @@ export class VariableEditorCtrl {
         if (err.data && err.data.message) {
           err.message = err.data.message;
         }
-        appEvents.emit('alert-error', ['Templating', 'Template variables could not be initialized: ' + err.message]);
+        appEvents.emit('alert-error', ['Templating', '无法初始化模板变量: ' + err.message]);
       });
     };
 

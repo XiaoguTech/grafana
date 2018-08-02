@@ -89,7 +89,7 @@ export class VariableSrv {
     var ctor = variableTypes[model.type].ctor;
     if (!ctor) {
       throw {
-        message: 'Unable to find variable constructor for ' + model.type,
+        message: '无法找到变量构造函数 ' + model.type,
       };
     }
 
