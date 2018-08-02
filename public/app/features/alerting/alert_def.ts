@@ -26,11 +26,11 @@ var alertStateSortScore = {
 };
 
 var evalFunctions = [
-  { text: 'IS ABOVE', value: 'gt' },
-  { text: 'IS BELOW', value: 'lt' },
-  { text: 'IS OUTSIDE RANGE', value: 'outside_range' },
-  { text: 'IS WITHIN RANGE', value: 'within_range' },
-  { text: 'HAS NO VALUE', value: 'no_value' },
+  { text: '高于', value: 'gt' },
+  { text: '低于', value: 'lt' },
+  { text: '超出范围', value: 'outside_range' },
+  { text: '所属范围', value: 'within_range' },
+  { text: '缺省值', value: 'no_value' },
 ];
 
 var evalOperators = [{ text: 'OR', value: 'or' }, { text: 'AND', value: 'and' }];
@@ -49,13 +49,13 @@ var reducerTypes = [
 ];
 
 var noDataModes = [
-  { text: 'Alerting', value: 'alerting' },
-  { text: 'No Data', value: 'no_data' },
-  { text: 'Keep Last State', value: 'keep_state' },
-  { text: 'Ok', value: 'ok' },
+  { text: '报警', value: 'alerting' },
+  { text: '缺值', value: 'no_data' },
+  { text: '保持状态', value: 'keep_state' },
+  { text: '安全', value: 'ok' },
 ];
 
-var executionErrorModes = [{ text: 'Alerting', value: 'alerting' }, { text: 'Keep Last State', value: 'keep_state' }];
+var executionErrorModes = [{ text: '报警', value: 'alerting' }, { text: 'Keep Last State', value: 'keep_state' }];
 
 function createReducerPart(model) {
   var def = new QueryPartDef({ type: model.type, defaultParams: [] });
@@ -66,35 +66,35 @@ function getStateDisplayModel(state) {
   switch (state) {
     case 'ok': {
       return {
-        text: 'OK',
+        text: '安全',
         iconClass: 'icon-gf icon-gf-online',
         stateClass: 'alert-state-ok',
       };
     }
     case 'alerting': {
       return {
-        text: 'ALERTING',
+        text: '报警',
         iconClass: 'icon-gf icon-gf-critical',
         stateClass: 'alert-state-critical',
       };
     }
     case 'no_data': {
       return {
-        text: 'NO DATA',
+        text: '缺值',
         iconClass: 'fa fa-question',
         stateClass: 'alert-state-warning',
       };
     }
     case 'paused': {
       return {
-        text: 'PAUSED',
+        text: '暂停',
         iconClass: 'fa fa-pause',
         stateClass: 'alert-state-paused',
       };
     }
     case 'pending': {
       return {
-        text: 'PENDING',
+        text: '等待',
         iconClass: 'fa fa-exclamation',
         stateClass: 'alert-state-warning',
       };
