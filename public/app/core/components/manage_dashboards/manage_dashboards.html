@@ -91,7 +91,7 @@
             class="btn gf-form-button btn-inverse"
             ng-disabled="!ctrl.canMove"
             ng-click="ctrl.moveTo()"
-            bs-tooltip="ctrl.canMove ? '' : 'Select a dashboard to move (cannot move folders)'"
+            bs-tooltip="ctrl.canMove ? '' : '选择移动一个仪表盘(不支持移动文件夹)'"
             data-placement="bottom">
           <i class="fa fa-exchange"></i>&nbsp;&nbsp;移动
           </button>
@@ -118,13 +118,13 @@
 
 <div ng-if="ctrl.canSave && ctrl.folderId && !ctrl.hasFilters && ctrl.sections.length === 0">
   <empty-list-cta model="{
-    title: 'This folder doesn\'t have any dashboards yet',
+    title: '这个文件夹暂无仪表盘',
     buttonIcon: 'gicon gicon-dashboard-new',
     buttonLink: 'dashboard/new?folderId={{ctrl.folderId}}',
-    buttonTitle: 'Create Dashboard',
-    proTip: 'Add/move dashboards to your folder at ->',
+    buttonTitle: '创建仪表盘',
+    proTip: '添加/移动仪表盘到你的文件夹 ->',
     proTipLink: 'dashboards',
-    proTipLinkTitle: 'Manage dashboards',
+    proTipLinkTitle: '管理仪表盘',
     proTipTarget: ''
   }" />
 </div>

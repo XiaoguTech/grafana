@@ -23,12 +23,12 @@ function ItemAvatar({ item }) {
 
 function ItemDescription({ item }) {
   if (item.userId) {
-    return <span className="filter-table__weak-italic">(User)</span>;
+    return <span className="filter-table__weak-italic">(成员)</span>;
   }
   if (item.teamId) {
-    return <span className="filter-table__weak-italic">(Team)</span>;
+    return <span className="filter-table__weak-italic">(团队)</span>;
   }
-  return <span className="filter-table__weak-italic">(Role)</span>;
+  return <span className="filter-table__weak-italic">(角色)</span>;
 }
 
 export default observer(({ item, removeItem, permissionChanged, itemIndex, folderInfo }) => {

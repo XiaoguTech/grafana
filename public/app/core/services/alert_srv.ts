@@ -56,7 +56,7 @@ export class AlertSrv {
     if (_.isObject(text)) {
       console.log('alert error', text);
       if (text.statusText) {
-        text = `HTTP Error (${text.status}) ${text.statusText}`;
+        text = `HTTP 错误 (${text.status}) ${text.statusText}`;
       }
     }
 

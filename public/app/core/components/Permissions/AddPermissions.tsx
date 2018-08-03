@@ -115,7 +115,7 @@ class AddPermissions extends Component<Props, any> {
 
             <div className="gf-form">
               <button data-save-permission className="btn btn-success" type="submit" disabled={!isValid}>
-                Save
+                保存
               </button>
             </div>
           </div>

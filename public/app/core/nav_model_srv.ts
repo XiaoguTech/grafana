@@ -70,7 +70,7 @@ export class NavModelSrv {
 
   getNotFoundNav() {
     var node = {
-      text: 'Page not found',
+      text: '找不到页面',
       icon: 'fa fa-fw fa-warning',
       subTitle: '404 错误',
     };
