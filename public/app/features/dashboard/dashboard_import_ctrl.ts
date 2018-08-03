@@ -135,9 +135,9 @@ export class DashboardImportCtrl {
       .then(res => {
         this.uidExists = true;
         this.hasUidValidationError = true;
-        this.uidValidationError = `Dashboard named '${res.dashboard.title}' in folder '${
+        this.uidValidationError = `名为 '${res.dashboard.title}' 的仪表盘在文件夹 '${
           res.meta.folderTitle
-        }' has the same uid`;
+        }' 中存在相同的 uid`;
       })
       .catch(err => {
         err.isHandled = true;

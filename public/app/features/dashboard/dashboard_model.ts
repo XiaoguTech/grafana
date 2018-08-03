@@ -63,7 +63,7 @@ export class DashboardModel {
     this.id = data.id || null;
     this.uid = data.uid || null;
     this.revision = data.revision;
-    this.title = data.title || 'No Title';
+    this.title = data.title || '无标题';
     this.autoUpdate = data.autoUpdate;
     this.description = data.description;
     this.tags = data.tags || [];
@@ -108,7 +108,7 @@ export class DashboardModel {
 
     this.annotations.list.unshift({
       datasource: '-- Grafana --',
-      name: 'Annotations & Alerts',
+      name: '注释 & 报警',
       type: 'dashboard',
       iconColor: DEFAULT_ANNOTATION_COLOR,
       enable: true,

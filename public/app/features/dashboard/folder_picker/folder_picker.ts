@@ -13,7 +13,7 @@ export class FolderPickerCtrl {
   exitFolderCreation: any;
   enableCreateNew: boolean;
   enableReset: boolean;
-  rootName = 'General';
+  rootName = '通用';
   folder: any;
   createNewFolder: boolean;
   newFolderName: string;
@@ -56,7 +56,7 @@ export class FolderPickerCtrl {
       }
 
       if (this.isEditor && this.enableCreateNew && query === '') {
-        result.unshift({ title: '-- New Folder --', id: -1 });
+        result.unshift({ title: '-- 新建文件夹 --', id: -1 });
       }
 
       if (this.enableReset && query === '' && this.initialTitle !== '') {

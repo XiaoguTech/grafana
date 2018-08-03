@@ -18,15 +18,15 @@ export class MoveToFolderCtrl {
   save() {
     return this.backendSrv.moveDashboards(this.dashboards, this.folder).then(result => {
       if (result.successCount > 0) {
-        const header = `Dashboard${result.successCount === 1 ? '' : 's'} Moved`;
-        const msg = `${result.successCount} dashboard${result.successCount === 1 ? '' : 's'} moved to ${
+        const header = `${result.successCount === 1 ? '' : 's'} 个仪表盘已移动`;
+        const msg = `${result.successCount} 个仪表盘 ${result.successCount === 1 ? '' : 's'} 移动到 ${
           this.folder.title
         }`;
         appEvents.emit('alert-success', [header, msg]);
       }
 
       if (result.totalCount === result.alreadyInFolderCount) {
-        appEvents.emit('alert-error', ['Error', `Dashboards already belongs to folder ${this.folder.title}`]);
+        appEvents.emit('alert-error', ['错误', `该仪表盘已存在文件夹 ${this.folder.title} 中`]);
       }
 
       this.dismiss();
