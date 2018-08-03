@@ -13,7 +13,7 @@
 			<div class="gf-form">
 				<span class="gf-form-label">角色</span>
         <span class="gf-form-select-wrapper">
-            <select class="gf-form-input gf-size-auto" ng-model="token.role" ng-options="r for r in roleTypes"></select>
+            <select class="gf-form-input gf-size-auto" ng-model="token.role" ng-options="r.value as r.text for r in roleTypes"></select>
         </span>
 			</div>
 			<div class="gf-form">
@@ -34,7 +34,7 @@
 		<tbody>
 			<tr ng-repeat="t in tokens">
 				<td>{{t.name}}</td>
-				<td>{{t.role}}</td>
+				<td>{{t.roleText}}</td>
 				<td>
 					<a ng-click="removeToken(t.id)" class="btn btn-danger btn-mini">
 						<i class="fa fa-remove"></i>

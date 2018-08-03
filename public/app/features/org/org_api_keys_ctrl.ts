@@ -5,7 +5,7 @@ export class OrgApiKeysCtrl {
   constructor($scope, $http, backendSrv, navModelSrv) {
     $scope.navModel = navModelSrv.getNav('cfg', 'apikeys', 0);
 
-    $scope.roleTypes = ['Viewer', 'Editor', 'Admin'];
+    $scope.roleTypes = [{text: '观看者', value: 'Viewer'}, {text: '编辑者', value: 'Editor'},{text: '管理员', value: 'Admin'}];
     $scope.token = { role: 'Viewer' };
 
     $scope.init = function() {
@@ -14,6 +14,13 @@ export class OrgApiKeysCtrl {
 
     $scope.getTokens = function() {
       backendSrv.get('/api/auth/keys').then(function(tokens) {
+        angular.forEach(tokens, (obj, index)=>{
+          angular.forEach($scope.roleTypes, (obj2, index2)=>{
+            if (obj.role === obj2.value) {
+              tokens[index].roleText = obj2.text
+            }
+          })
+        })
         $scope.tokens = tokens;
       });
     };
