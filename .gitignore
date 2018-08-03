@@ -75,4 +75,4 @@ package-lock.json
 
 
 # ignore public/build in branch locale
-public/build/*
+# public/build/*
