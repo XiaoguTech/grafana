@@ -42,7 +42,7 @@
 
 	<form name="passwordForm" class="gf-form-group">
 		<div class="gf-form" >
-			<gf-form-switch class="gf-form" label="Grafana Admin" checked="permissions.isGrafanaAdmin" switch-class="max-width-6"></gf-form-switch>
+			<gf-form-switch class="gf-form" label="Grafana系统管理员" checked="permissions.isGrafanaAdmin" switch-class="max-width-6"></gf-form-switch>
 		</div>
 
 		<div class="gf-form-button-row">
@@ -56,7 +56,7 @@
 		<div class="gf-form-inline">
 			<div class="gf-form">
 				<span class="gf-form-label">添加</span>
-				<input type="text" ng-model="newOrg.name" bs-typeahead="searchOrgs"	required class="gf-form-input max-width-20" placeholder="organization name">
+				<input type="text" ng-model="newOrg.name" bs-typeahead="searchOrgs"	required class="gf-form-input max-width-20" placeholder="组织名称">
 			</div>
 			<div class="gf-form">
         	<span class="gf-form-label">角色</span>

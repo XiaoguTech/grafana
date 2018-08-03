@@ -45,7 +45,7 @@ export const NavStore = types
       let main = {
         icon: 'fa fa-folder-open',
         id: 'manage-folder',
-        subTitle: '管理文件夹及权限',
+        subTitle: '管理文件夹仪表盘及权限',
         url: '',
         text: folder.title,
         breadcrumbs: [{ title: '仪表盘', url: 'dashboards' }],
@@ -78,7 +78,7 @@ export const NavStore = types
     },
 
     initDatasourceEditNav(ds: any, plugin: any, currentPage: string) {
-      let title = '新增';
+      let title = '添加';
       let subTitle = `类型: ${plugin.name}`;
 
       if (ds.id) {

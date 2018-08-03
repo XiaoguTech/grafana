@@ -2,20 +2,20 @@ import { types, getEnv, flow } from 'mobx-state-tree';
 import { PermissionsStoreItem } from './PermissionsStoreItem';
 
 export const permissionOptions = [
-  { value: 1, label: 'View', description: 'Can view dashboards.' },
-  { value: 2, label: 'Edit', description: 'Can add, edit and delete dashboards.' },
+  { value: 1, label: 'View', description: '可以查看仪表盘。' },
+  { value: 2, label: 'Edit', description: '可以添加，编辑，删除仪表盘。' },
   {
     value: 4,
     label: 'Admin',
-    description: 'Can add/remove permissions and can add, edit and delete dashboards.',
+    description: '可以添加/移除权限并添加，编辑，删除仪表盘。',
   },
 ];
 
 export const aclTypeValues = {
-  GROUP: { value: 'Group', text: 'Team' },
-  USER: { value: 'User', text: 'User' },
-  VIEWER: { value: 'Viewer', text: 'Everyone With Viewer Role' },
-  EDITOR: { value: 'Editor', text: 'Everyone With Editor Role' },
+  GROUP: { value: 'Group', text: '团队' },
+  USER: { value: 'User', text: '成员' },
+  VIEWER: { value: 'Viewer', text: '角色:查看' },
+  EDITOR: { value: 'Editor', text: '角色:编辑' },
 };
 
 export const aclTypes = Object.keys(aclTypeValues).map(item => aclTypeValues[item]);
