@@ -49,9 +49,9 @@ export class TagFilter extends React.Component<IProps, any> {
       value: this.props.tags,
       multi: true,
       className: 'gf-form-input gf-form-input--form-dropdown',
-      placeholder: 'Tags',
-      loadingPlaceholder: 'Loading...',
-      noResultsText: 'No tags found',
+      placeholder: '标签',
+      loadingPlaceholder: '加载中...',
+      noResultsText: '找不到标签',
       optionComponent: TagOption,
     };
 

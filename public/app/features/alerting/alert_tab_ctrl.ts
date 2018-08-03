@@ -335,11 +335,11 @@ export class AlertTabCtrl {
 
   delete() {
     appEvents.emit('confirm-modal', {
-      title: 'Delete Alert',
-      text: 'Are you sure you want to delete this alert rule?',
-      text2: 'You need to save dashboard for the delete to take effect',
+      title: '删除报警',
+      text: '确定希望删除这条报警规则?',
+      text2: '需要保存仪表盘使删除生效',
       icon: 'fa-trash',
-      yesText: 'Delete',
+      yesText: '删除',
       onConfirm: () => {
         delete this.panel.alert;
         this.alert = null;
@@ -384,10 +384,10 @@ export class AlertTabCtrl {
 
   clearHistory() {
     appEvents.emit('confirm-modal', {
-      title: 'Delete Alert History',
-      text: 'Are you sure you want to remove all history & annotations for this alert?',
+      title: '删除历史状态',
+      text: '您确定要删除此警报的所有历史状态和注释吗?',
       icon: 'fa-trash',
-      yesText: 'Yes',
+      yesText: '是',
       onConfirm: () => {
         this.backendSrv
           .post('/api/annotations/mass-delete', {

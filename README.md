@@ -1,26 +1,21 @@
-[Grafana](https://grafana.com) [![Circle CI](https://circleci.com/gh/grafana/grafana.svg?style=svg)](https://circleci.com/gh/grafana/grafana) [![Go Report Card](https://goreportcard.com/badge/github.com/grafana/grafana)](https://goreportcard.com/report/github.com/grafana/grafana) [![codecov](https://codecov.io/gh/grafana/grafana/branch/master/graph/badge.svg)](https://codecov.io/gh/grafana/grafana)
-================
-[Website](https://grafana.com) |
-[Twitter](https://twitter.com/grafana) |
-[Community & Forum](https://community.grafana.com)
+# locale
+## 创建日期
+20180730
 
-Grafana is an open source, feature rich metrics dashboard and graph editor for
-Graphite, Elasticsearch, OpenTSDB, Prometheus and InfluxDB.
+## 说明
+grafana前端汉化文件
 
-![](http://docs.grafana.org/assets/img/features/dashboard_ex1.png)
+## 使用说明
+将grafana源代码根目录下的`public/`替换成该仓库中的内容
 
-## Installation
-Head to [docs.grafana.org](http://docs.grafana.org/installation/) and [download](https://grafana.com/get)
-the latest release.
+## 相关链接
+[汉化教程](https://gitlab.com/XGTech/doc/blob/master/grafana_trans_into_chinese.md)
 
-If you have any problems please read the [troubleshooting guide](http://docs.grafana.org/installation/troubleshooting/).
+[原Github仓库：WangHL0927/grafana-chinese](https://github.com/WangHL0927/grafana-chinese)
 
-## Documentation & Support
-Be sure to read the [getting started guide](http://docs.grafana.org/guides/gettingstarted/) and the other feature guides.
-
+# Origin-Master
 ## Run from master
-If you want to build a package yourself, or contribute - Here is a guide for how to do that. You can always find
-the latest master builds [here](https://grafana.com/grafana/download)
+If you want to build a package yourself, or contribute - Here is a guide for how to do that.
 
 ### Dependencies
 
@@ -54,7 +49,7 @@ env GRAFANA_THEME=light yarn start
 ```
 Note: HMR for Angular is not supported. If you edit files in the Angular part of the app, the whole page will reload.
 
-Run tests 
+Run tests
 ```bash
 npm run jest
 ```
@@ -101,30 +96,22 @@ Writing & watching frontend tests (we have two test runners)
   - Start watcher: `npm run karma`
   - Karma+Mocha runs all files that end with the name "_specs.ts".
 
+
 #### Backend
 ```bash
 # Run Golang tests using sqlite3 as database (default)
-go test ./pkg/... 
+go test ./pkg/...
 
 # Run Golang tests using mysql as database - convenient to use /docker/blocks/mysql_tests
-GRAFANA_TEST_DB=mysql go test ./pkg/... 
+GRAFANA_TEST_DB=mysql go test ./pkg/...
 
 # Run Golang tests using postgres as database - convenient to use /docker/blocks/postgres_tests
-GRAFANA_TEST_DB=postgres go test ./pkg/... 
+GRAFANA_TEST_DB=postgres go test ./pkg/...
 ```
-
-## Contribute
-
-If you have any idea for an improvement or found a bug, do not hesitate to open an issue.
-And if you have time clone this repo and submit a pull request and help me make Grafana
-the kickass metrics & devops dashboard we all dream about!
 
 ## Plugin development
 
 Checkout the [Plugin Development Guide](http://docs.grafana.org/plugins/developing/development/) and checkout the [PLUGIN_DEV.md](https://github.com/grafana/grafana/blob/master/PLUGIN_DEV.md) file for changes in Grafana that relate to
 plugin development.
 
-## License
-
-Grafana is distributed under Apache 2.0 License.
 

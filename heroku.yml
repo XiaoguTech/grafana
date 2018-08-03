@@ -3,4 +3,4 @@ build:
     - go
 run:
   web:
-    - grafana-server
+    - grafana

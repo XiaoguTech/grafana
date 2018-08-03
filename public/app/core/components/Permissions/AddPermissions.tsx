@@ -75,7 +75,7 @@ class AddPermissions extends Component<Props, any> {
           <i className="fa fa-close" />
         </button>
         <form name="addPermission" onSubmit={this.onSubmit}>
-          <h5>Add Permission For</h5>
+          <h5>为其添加权限</h5>
           <div className="gf-form-inline">
             <div className="gf-form">
               <div className="gf-form-select-wrapper">
@@ -115,7 +115,7 @@ class AddPermissions extends Component<Props, any> {
 
             <div className="gf-form">
               <button data-save-permission className="btn btn-success" type="submit" disabled={!isValid}>
-                Save
+                保存
               </button>
             </div>
           </div>

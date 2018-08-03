@@ -28,9 +28,9 @@ export class SignUpCtrl {
     $scope.navModel = {
       main: {
         icon: 'gicon gicon-branding',
-        text: 'Sign Up',
-        subTitle: 'Register your Grafana account',
-        breadcrumbs: [{ title: 'Login', url: 'login' }],
+        text: '注册',
+        subTitle: '注册Grafana账号',
+        breadcrumbs: [{ title: '登录', url: 'login' }],
       },
     };
 

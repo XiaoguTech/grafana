@@ -26,13 +26,13 @@ export class LoginCtrl {
     $scope.loginHint = config.loginHint;
 
     $scope.loginMode = true;
-    $scope.submitBtnText = 'Log in';
+    $scope.submitBtnText = '登录';
 
     $scope.init = function() {
       $scope.$watch('loginMode', $scope.loginModeChanged);
 
       if (config.loginError) {
-        $scope.appEvent('alert-warning', ['Login Failed', config.loginError]);
+        $scope.appEvent('alert-warning', ['登录失败', config.loginError]);
       }
     };
 
@@ -68,7 +68,7 @@ export class LoginCtrl {
       $scope.command.oldPassword = 'admin';
 
       if ($scope.command.newPassword !== $scope.command.confirmNew) {
-        $scope.appEvent('alert-warning', ['New passwords do not match', '']);
+        $scope.appEvent('alert-warning', ['两次密码不一致', '']);
         return;
       }
 
@@ -82,7 +82,7 @@ export class LoginCtrl {
     };
 
     $scope.loginModeChanged = function(newValue) {
-      $scope.submitBtnText = newValue ? 'Log in' : 'Sign up';
+      $scope.submitBtnText = newValue ? '登录' : '注册';
     };
 
     $scope.signUp = function() {

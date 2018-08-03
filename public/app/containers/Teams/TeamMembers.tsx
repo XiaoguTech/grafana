@@ -32,9 +32,9 @@ export class TeamMembers extends React.Component<Props, State> {
 
   removeMember(member: ITeamMember) {
     appEvents.emit('confirm-modal', {
-      title: 'Remove Member',
-      text: 'Are you sure you want to remove ' + member.login + ' from this group?',
-      yesText: 'Remove',
+      title: '移除成员',
+      text: '确定移除组内成员' + member.login + '?',
+      yesText: '移除',
       icon: 'fa-warning',
       onConfirm: () => {
         this.removeMemberConfirmed(member);
@@ -90,7 +90,7 @@ export class TeamMembers extends React.Component<Props, State> {
               <input
                 type="text"
                 className="gf-form-input"
-                placeholder="Search members"
+                placeholder="搜索成员"
                 value={''}
                 onChange={this.onSearchQueryChange}
               />
@@ -101,7 +101,7 @@ export class TeamMembers extends React.Component<Props, State> {
           <div className="page-action-bar__spacer" />
 
           <button className="btn btn-success pull-right" onClick={this.onToggleAdding} disabled={isAdding}>
-            <i className="fa fa-plus" /> Add a member
+            <i className="fa fa-plus" /> 添加新成员
           </button>
         </div>
 
@@ -110,13 +110,13 @@ export class TeamMembers extends React.Component<Props, State> {
             <button className="cta-form__close btn btn-transparent" onClick={this.onToggleAdding}>
               <i className="fa fa-close" />
             </button>
-            <h5>Add Team Member</h5>
+            <h5>添加团队成员</h5>
             <div className="gf-form-inline">
               <UserPicker onSelected={this.onUserSelected} className="width-30" value={newTeamMemberValue} />
 
               {this.state.newTeamMember && (
                 <button className="btn btn-success gf-form-btn" type="submit" onClick={this.onAddUserToTeam}>
-                  Add to team
+                  添加进团队
                 </button>
               )}
             </div>
@@ -128,8 +128,8 @@ export class TeamMembers extends React.Component<Props, State> {
             <thead>
               <tr>
                 <th />
-                <th>Name</th>
-                <th>Email</th>
+                <th>名字</th>
+                <th>邮箱</th>
                 <th style={{ width: '1%' }} />
               </tr>
             </thead>

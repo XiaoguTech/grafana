@@ -3,13 +3,13 @@
 <div class="page-container page-body">
 	<div class="page-action-bar">
     <label class="gf-form gf-form--grow gf-form--has-input-icon">
-      <input type="text" class="gf-form-input max-width-30" placeholder="Find user by name/login/email" tabindex="1" give-focus="true" ng-model="ctrl.query" ng-model-options="{ debounce: 500 }" spellcheck='false' ng-change="ctrl.getUsers()" />
+      <input type="text" class="gf-form-input max-width-30" placeholder="通过名称/登录/邮箱查找" tabindex="1" give-focus="true" ng-model="ctrl.query" ng-model-options="{ debounce: 500 }" spellcheck='false' ng-change="ctrl.getUsers()" />
       <i class="gf-form-input-icon fa fa-search"></i>
     </label>
     <div class="page-action-bar__spacer"></div>
     <a class="btn btn-success" href="admin/users/create">
       <i class="fa fa-plus"></i>
-      Add new user
+      添加新成员
     </a>
   </div>
 
@@ -18,11 +18,11 @@
       <thead>
         <tr>
           <th></th>
-          <th>Login</th>
-          <th>Email</th>
+          <th>登录</th>
+          <th>邮箱</th>
           <th>
-            Seen
-            <tip>Time since user was seen using Grafana</tip>
+            近期
+            <tip>近期成员使用Grafana的时间</tip>
           </th>
           <th></th>
           <th style="width: 1%"></th>
@@ -52,7 +52,7 @@
           </td>
           <td class="link-td">
             <a href="admin/users/edit/{{user.id}}">
-              <i class="fa fa-shield" ng-show="user.isAdmin" bs-tooltip="'Grafana Admin'"></i>
+              <i class="fa fa-shield" ng-show="user.isAdmin" bs-tooltip="'Grafana系统管理员'"></i>
             </a>
           </td>
           <td class="text-right">

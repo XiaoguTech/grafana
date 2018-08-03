@@ -35,7 +35,7 @@ export class DashboardImportCtrl {
     this.autoGenerateUid = true;
     this.autoGenerateUidValue = 'auto-generated';
     this.folderId = $routeParams.folderId ? Number($routeParams.folderId) || 0 : null;
-    this.initialFolderTitle = 'Select a folder';
+    this.initialFolderTitle = '选择一个文件夹';
 
     // check gnetId in url
     if ($routeParams.gnetId) {
@@ -65,7 +65,7 @@ export class DashboardImportCtrl {
         if (input.type === 'datasource') {
           this.setDatasourceOptions(input, inputModel);
         } else if (!inputModel.info) {
-          inputModel.info = 'Specify a string constant';
+          inputModel.info = '指定字符串常量';
         }
 
         this.inputs.push(inputModel);
@@ -83,9 +83,9 @@ export class DashboardImportCtrl {
     });
 
     if (sources.length === 0) {
-      inputModel.info = 'No data sources of type ' + input.pluginName + ' found';
+      inputModel.info = '没有找到 ' + input.pluginName + ' 类型的数据源';
     } else if (!inputModel.info) {
-      inputModel.info = 'Select a ' + input.pluginName + ' data source';
+      inputModel.info = '选择一个 ' + input.pluginName + ' 数据源';
     }
 
     inputModel.options = sources.map(val => {
@@ -135,9 +135,9 @@ export class DashboardImportCtrl {
       .then(res => {
         this.uidExists = true;
         this.hasUidValidationError = true;
-        this.uidValidationError = `Dashboard named '${res.dashboard.title}' in folder '${
+        this.uidValidationError = `名为 '${res.dashboard.title}' 的仪表盘在文件夹 '${
           res.meta.folderTitle
-        }' has the same uid`;
+        }' 中存在相同的 uid`;
       })
       .catch(err => {
         err.isHandled = true;

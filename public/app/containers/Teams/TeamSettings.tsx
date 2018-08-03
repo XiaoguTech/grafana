@@ -30,10 +30,10 @@ export class TeamSettings extends React.Component<Props, any> {
   render() {
     return (
       <div>
-        <h3 className="page-sub-heading">Team Settings</h3>
+        <h3 className="page-sub-heading">团队设置</h3>
         <form name="teamDetailsForm" className="gf-form-group">
           <div className="gf-form max-width-30">
-            <Label>Name</Label>
+            <Label>名字</Label>
             <input
               type="text"
               required
@@ -43,8 +43,8 @@ export class TeamSettings extends React.Component<Props, any> {
             />
           </div>
           <div className="gf-form max-width-30">
-            <Label tooltip="This is optional and is primarily used to set the team profile avatar (via gravatar service)">
-              Email
+            <Label tooltip="这是可选项，主要用于设置团队主页图标(统一标识服务)">
+              邮箱
             </Label>
             <input
               type="email"
@@ -57,7 +57,7 @@ export class TeamSettings extends React.Component<Props, any> {
 
           <div className="gf-form-button-row">
             <button type="submit" className="btn btn-success" onClick={this.onUpdate}>
-              Update
+              更新
             </button>
           </div>
         </form>

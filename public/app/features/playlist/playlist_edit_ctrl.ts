@@ -98,11 +98,11 @@ export class PlaylistEditCtrl {
 
     savePromise.then(
       () => {
-        this.$scope.appEvent('alert-success', ['Playlist saved', '']);
+        this.$scope.appEvent('alert-success', ['播放列表已保存', '']);
         this.$location.path('/playlists');
       },
       () => {
-        this.$scope.appEvent('alert-error', ['Unable to save playlist', '']);
+        this.$scope.appEvent('alert-error', ['无法保存播放列表', '']);
       }
     );
   }

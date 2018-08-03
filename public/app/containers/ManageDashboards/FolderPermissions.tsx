@@ -54,7 +54,7 @@ export class FolderPermissions extends Component<IContainerProps, any> {
         <PageHeader model={nav as any} />
         <div className="page-container page-body">
           <div className="page-action-bar">
-            <h3 className="page-sub-heading">Folder Permissions</h3>
+            <h3 className="page-sub-heading">文件夹权限</h3>
             <Tooltip className="page-sub-heading-icon" placement="auto" content={PermissionsInfo}>
               <i className="gicon gicon-question gicon--has-hover" />
             </Tooltip>
@@ -64,7 +64,7 @@ export class FolderPermissions extends Component<IContainerProps, any> {
               onClick={this.handleAddPermission}
               disabled={permissions.isAddPermissionsVisible}
             >
-              <i className="fa fa-plus" /> Add Permission
+              <i className="fa fa-plus" /> 添加权限
             </button>
           </div>
           <SlideDown in={permissions.isAddPermissionsVisible}>

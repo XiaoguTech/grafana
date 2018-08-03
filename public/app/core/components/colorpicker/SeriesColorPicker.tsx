@@ -29,7 +29,7 @@ export class SeriesColorPicker extends React.Component<IProps, any> {
 
     return (
       <div className="p-b-1">
-        <label className="small p-r-1">Y Axis:</label>
+        <label className="small p-r-1">Y 轴:</label>
         <button onClick={this.onToggleAxis} className={'btn btn-small ' + leftButtonClass}>
           Left
         </button>

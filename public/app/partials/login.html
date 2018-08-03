@@ -13,15 +13,15 @@
           </div>
           <div class="login-form">
             <input type="password" name="password" class="gf-form-input login-form-input" required ng-model="formModel.password" id="inputPassword"
-              placeholder="password">
+              placeholder="密码">
           </div>
           <div class="login-button-group">
             <button type="submit" class="btn btn-large p-x-2" ng-click="submit();" ng-class="{'btn-inverse': !loginForm.$valid, 'btn-primary': loginForm.$valid}">
-              Log In
+              登录
             </button>
             <div class="small login-button-forgot-password">
               <a href="user/password/send-reset-email">
-                Forgot your password?
+                忘记密码?
               </a>
             </div>
           </div>
@@ -33,7 +33,7 @@
           </div>
           <div>
             <span class="login-divider-text">
-              <span ng-hide="disableLoginForm">or</span>
+              <span ng-hide="disableLoginForm">或</span>
             </span>
           </div>
           <div>
@@ -45,51 +45,51 @@
         <div class="login-oauth text-center" ng-show="oauthEnabled">
           <a class="btn btn-medium btn-service btn-service--google login-btn" href="login/google" target="_self" ng-if="oauth.google">
             <i class="btn-service-icon fa fa-google"></i>
-            Sign in with Google
+            使用 Google 账户登录
           </a>
           <a class="btn btn-medium btn-service btn-service--github login-btn" href="login/github" target="_self" ng-if="oauth.github">
             <i class="btn-service-icon fa fa-github"></i>
-            Sign in with GitHub
+            使用 GitHub 账户登录
           </a>
           <a class="btn btn-medium btn-inverse btn-service btn-service--grafanacom login-btn" href="login/grafana_com" target="_self"
             ng-if="oauth.grafana_com">
             <i class="btn-service-icon"></i>
-            Sign in with Grafana.com
+            使用 Grafana.com 账户登录
           </a>
           <a class="btn btn-medium btn-inverse btn-service btn-service--oauth login-btn" href="login/generic_oauth" target="_self"
             ng-if="oauth.generic_oauth">
             <i class="btn-service-icon fa fa-sign-in"></i>
-            Sign in with {{oauth.generic_oauth.name}}
+            使用 {{oauth.generic_oauth.name}} 登录
           </a>
         </div>
         <div class="login-signup-box" ng-show="!disableUserSignUp">
           <div class="login-signup-title p-r-1">
-            New to Grafana?
+            初次使用Grafana?
           </div>
           <a href="signup" class="btn btn-medium btn-signup btn-p-x-2">
-            Sign Up
+            注册
           </a>
         </div>
       </div>
       <div class="login-inner-box remove hidden" id="change-password-view">
         <div class="text-left login-change-password-info">
-          <h5>Change Password</h5>
-          Before you can get started with awesome dashboards we need you to make your account more secure by changing your password.
-          <br />You can change your password again later.
+          <h5>修改密码</h5>
+          在你开始使用炫酷的仪表盘之前，我们需要你通过更改初始密码来提高帐户的安全性。
+          <br />你也可以稍后再次更改密码。
         </div>
         <form class="login-form-group gf-form-group">
           <div class="login-form">
             <input type="password" id="newPassword" name="newPassword" class="gf-form-input login-form-input" required ng-model='command.newPassword'
-              placeholder="New password">
+              placeholder="新密码">
           </div>
           <div class="login-form">
-            <input type="password" name="confirmNew" class="gf-form-input login-form-input" required ng-model="command.confirmNew" placeholder="Confirm new password">
+            <input type="password" name="confirmNew" class="gf-form-input login-form-input" required ng-model="command.confirmNew" placeholder="确认密码">
           </div>
           <div class="login-button-group login-button-group--right text-right">
             <a class="btn btn-link" ng-click="skip();">
-              Skip
+              跳过
               <info-popover mode="no-padding">
-                If you skip you will be prompted to change password next time you login.
+                如果跳过，下次登录时依旧会提示你更改密码。
               </info-popover>
             </a>
             <button type="submit" class="btn btn-large p-x-2" ng-click="changePassword();" ng-class="{'btn-inverse': !loginForm.$valid, 'btn-success': loginForm.$valid}">

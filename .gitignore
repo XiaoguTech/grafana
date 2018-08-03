@@ -72,3 +72,7 @@ debug.test
 
 /devenv/dashboards/bulk-testing/*.json
 package-lock.json
+
+
+# ignore public/build in branch locale
+# public/build/*

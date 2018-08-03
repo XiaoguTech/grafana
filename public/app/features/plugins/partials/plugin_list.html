@@ -4,14 +4,14 @@
   <div class="page-action-bar">
 		<div class="gf-form gf-form--grow">
 			<label class="gf-form--has-input-icon">
-				<input type="text" class="gf-form-input width-20" ng-model="ctrl.searchQuery" ng-change="ctrl.onQueryUpdated()" placeholder="Filter by name or type" />
+				<input type="text" class="gf-form-input width-20" ng-model="ctrl.searchQuery" ng-change="ctrl.onQueryUpdated()" placeholder="通过名称和类型过滤" />
 				<i class="gf-form-input-icon fa fa-search"></i>
 			</label>
 			<layout-selector />
 		</div>
 		<div class="page-action-bar__spacer"></div>
 		<a class="btn btn-success" href="https://grafana.com/plugins?utm_source=grafana_plugin_list" target="_blank">
-			Find more plugins on Grafana.com
+			前往 Grafana.com 获得更多插件信息
 		</a>
 	</div>
 
@@ -26,7 +26,7 @@
 							{{plugin.type}}
 						</div>
 						<div class="card-item-notice" ng-show="plugin.hasUpdate">
-							<span bs-tooltip="plugin.latestVersion">Update available!</span>
+							<span bs-tooltip="plugin.latestVersion">更新可用!</span>
 						</div>
 					</div>
 					<div class="card-item-body">
@@ -35,7 +35,7 @@
 						</figure>
 						<div class="card-item-details">
 							<div class="card-item-name">{{plugin.name}}</div>
-							<div class="card-item-sub-name">By {{plugin.info.author.name}}</div>
+							<div class="card-item-sub-name">由 {{plugin.info.author.name}} 发布</div>
 						</div>
 					</div>
 				</a>

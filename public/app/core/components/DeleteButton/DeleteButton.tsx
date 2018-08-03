@@ -53,10 +53,10 @@ export default class DeleteButton extends PureComponent<DeleteButtonProps, Delet
         <span className="confirm-delete-container">
           <span className={'confirm-delete ' + showConfirm}>
             <a className="btn btn-small" onClick={this.onClickCancel}>
-              Cancel
+              取消
             </a>
             <a className="btn btn-danger btn-small" onClick={onClickConfirm}>
-              Confirm Delete
+              确认删除
             </a>
           </span>
         </span>

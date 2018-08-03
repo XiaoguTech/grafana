@@ -31,7 +31,7 @@ class DynamicDirectiveSrv {
       })
       .catch(err => {
         console.log('Plugin load:', err);
-        this.$rootScope.appEvent('alert-error', ['Plugin error', err.toString()]);
+        this.$rootScope.appEvent('alert-error', ['插件出错', err.toString()]);
       });
   }
 

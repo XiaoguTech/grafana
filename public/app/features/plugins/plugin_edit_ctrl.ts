@@ -33,7 +33,7 @@ export class PluginEditCtrl {
         subTitle: model.info.author.name,
         url: '',
         text: model.name,
-        breadcrumbs: [{ title: 'Plugins', url: 'plugins' }],
+        breadcrumbs: [{ title: '插件', url: 'plugins' }],
         children: [
           {
             icon: 'fa fa-fw fa-file-text-o',
@@ -49,7 +49,7 @@ export class PluginEditCtrl {
       this.navModel.main.children.push({
         icon: 'gicon gicon-cog',
         id: 'config',
-        text: 'Config',
+        text: '配置',
         url: `plugins/${this.model.id}/edit?tab=config`,
       });
 
@@ -59,7 +59,7 @@ export class PluginEditCtrl {
         this.navModel.main.children.push({
           icon: 'gicon gicon-dashboard',
           id: 'dashboards',
-          text: 'Dashboards',
+          text: '仪表盘',
           url: `plugins/${this.model.id}/edit?tab=dashboards`,
         });
       }

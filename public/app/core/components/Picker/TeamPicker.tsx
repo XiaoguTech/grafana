@@ -67,12 +67,12 @@ export class TeamPicker extends Component<Props, State> {
           cache={false}
           isLoading={isLoading}
           loadOptions={this.debouncedSearch}
-          loadingPlaceholder="Loading..."
-          noResultsText="No teams found"
+          loadingPlaceholder="加载中..."
+          noResultsText="找不到团队"
           onChange={onSelected}
           className={`gf-form-input gf-form-input--form-dropdown ${className || ''}`}
           optionComponent={PickerOption}
-          placeholder="Select a team"
+          placeholder="选择一个团队"
           value={value}
           autosize={true}
         />
