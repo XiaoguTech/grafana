@@ -53,7 +53,7 @@ export class FolderSettings extends React.Component<IContainerProps, any> {
         view.updatePathAndQuery(newUrl, {}, {});
 
         appEvents.emit('dashboard-saved');
-        appEvents.emit('alert-success', ['Folder saved']);
+        appEvents.emit('alert-success', ['文件夹已保存']);
       })
       .then(() => {
         return nav.initFolderNav(toJS(folder.folder), 'manage-folder-settings');
@@ -71,13 +71,13 @@ export class FolderSettings extends React.Component<IContainerProps, any> {
     const title = folder.folder.title;
 
     appEvents.emit('confirm-modal', {
-      title: 'Delete',
-      text: `Do you want to delete this folder and all its dashboards?`,
+      title: '删除',
+      text: `确定删除该文件夹及其所有仪表盘?`,
       icon: 'fa-trash',
-      yesText: 'Delete',
+      yesText: '删除',
       onConfirm: () => {
         return folder.deleteFolder().then(() => {
-          appEvents.emit('alert-success', ['Folder Deleted', `${title} has been deleted`]);
+          appEvents.emit('alert-success', ['文件夹已删除', `${title} 已被删除`]);
           view.updatePathAndQuery('dashboards', '', '');
         });
       },
@@ -91,10 +91,10 @@ export class FolderSettings extends React.Component<IContainerProps, any> {
       const { nav, folder, view } = this.props;
 
       appEvents.emit('confirm-modal', {
-        title: 'Conflict',
-        text: 'Someone else has updated this folder.',
-        text2: 'Would you still like to save this folder?',
-        yesText: 'Save & Overwrite',
+        title: '冲突',
+        text: '该文件夹已被他人更新了。',
+        text2: '确定仍要保存这个文件夹?',
+        yesText: '保存 & 覆盖',
         icon: 'fa-warning',
         onConfirm: () => {
           folder
@@ -103,7 +103,7 @@ export class FolderSettings extends React.Component<IContainerProps, any> {
               view.updatePathAndQuery(newUrl, {}, {});
 
               appEvents.emit('dashboard-saved');
-              appEvents.emit('alert-success', ['Folder saved']);
+              appEvents.emit('alert-success', ['文件夹已保存']);
             })
             .then(() => {
               return nav.initFolderNav(toJS(folder.folder), 'manage-folder-settings');
@@ -124,12 +124,12 @@ export class FolderSettings extends React.Component<IContainerProps, any> {
       <div>
         <PageHeader model={nav as any} />
         <div className="page-container page-body">
-          <h2 className="page-sub-heading">Folder Settings</h2>
+          <h2 className="page-sub-heading">文件夹设置</h2>
 
           <div className="section gf-form-group">
             <form name="folderSettingsForm" onSubmit={this.save.bind(this)}>
               <div className="gf-form">
-                <label className="gf-form-label width-7">Name</label>
+                <label className="gf-form-label width-7">名称</label>
                 <input
                   type="text"
                   className="gf-form-input width-30"
@@ -143,10 +143,10 @@ export class FolderSettings extends React.Component<IContainerProps, any> {
                   className="btn btn-success"
                   disabled={!folder.folder.canSave || !folder.folder.hasChanged}
                 >
-                  <i className="fa fa-save" /> Save
+                  <i className="fa fa-save" /> 保存
                 </button>
                 <button className="btn btn-danger" onClick={this.delete.bind(this)} disabled={!folder.folder.canSave}>
-                  <i className="fa fa-trash" /> Delete
+                  <i className="fa fa-trash" /> 删除
                 </button>
               </div>
             </form>

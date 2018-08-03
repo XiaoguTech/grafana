@@ -75,7 +75,7 @@ export class TeamGroupSync extends React.Component<Props, State> {
           <div className="page-action-bar__spacer" />
           {groups.length > 0 && (
             <button className="btn btn-success pull-right" onClick={this.onToggleAdding}>
-              <i className="fa fa-plus" /> Add group
+              <i className="fa fa-plus" /> 添加组
             </button>
           )}
         </div>
@@ -85,7 +85,7 @@ export class TeamGroupSync extends React.Component<Props, State> {
             <button className="cta-form__close btn btn-transparent" onClick={this.onToggleAdding}>
               <i className="fa fa-close" />
             </button>
-            <h5>Add External Group</h5>
+            <h5>添加外部组</h5>
             <div className="gf-form-inline">
               <div className="gf-form">
                 <input
@@ -104,7 +104,7 @@ export class TeamGroupSync extends React.Component<Props, State> {
                   type="submit"
                   disabled={!this.isNewGroupValid()}
                 >
-                  Add group
+                  添加组
                 </button>
               </div>
             </div>

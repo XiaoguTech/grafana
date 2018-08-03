@@ -64,7 +64,7 @@ export class FolderPermissions extends Component<IContainerProps, any> {
               onClick={this.handleAddPermission}
               disabled={permissions.isAddPermissionsVisible}
             >
-              <i className="fa fa-plus" /> Add Permission
+              <i className="fa fa-plus" /> 添加权限
             </button>
           </div>
           <SlideDown in={permissions.isAddPermissionsVisible}>

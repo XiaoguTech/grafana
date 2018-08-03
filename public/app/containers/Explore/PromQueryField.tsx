@@ -331,7 +331,7 @@ class PromQueryField extends React.Component<PromQueryFieldProps, PromQueryField
         onTypeahead={this.onTypeahead}
         onWillApplySuggestion={willApplySuggestion}
         onValueChanged={this.onChangeQuery}
-        placeholder="Enter a PromQL query"
+        placeholder="输入一条 PromQL 查询"
       />
     );
   }

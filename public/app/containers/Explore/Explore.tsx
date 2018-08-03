@@ -403,7 +403,7 @@ export class Explore extends React.Component<any, IExploreState> {
                 clearable={false}
                 onChange={this.handleChangeDatasource}
                 options={datasources}
-                placeholder="Loading datasources..."
+                placeholder="加载数据源..."
                 value={selectedDatasource}
               />
             </div>
