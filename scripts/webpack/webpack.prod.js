@@ -28,7 +28,7 @@ module.exports = merge(common, {
         use: {
           loader: 'tslint-loader',
           options: {
-            emitErrors: true,
+            emitErrors: false,
             typeCheck: false,
           }
         }
