@@ -9,29 +9,28 @@
 
   <div class="gf-form-inline">
     <div class="gf-form max-width-26">
-      <label class="gf-form-label width-8">Legend format</label>
-      <input type="text" class="gf-form-input" ng-model="ctrl.target.legendFormat" spellcheck='false' placeholder="legend format"
+      <label class="gf-form-label width-8">图例格式</label>
+      <input type="text" class="gf-form-input" ng-model="ctrl.target.legendFormat" spellcheck='false' placeholder="图例格式"
         data-min-length=0 data-items=1000 ng-model-onblur ng-change="ctrl.refreshMetricData()">
       </input>
       <info-popover mode="right-absolute">
-        Controls the name of the time series, using name or pattern. For example
-        <span ng-non-bindable>{{hostname}}</span> will be replaced with label value for the label hostname.
+        使用名称或正则表达式来控制时间序列的名称。 例如
+        <span ng-non-bindable>{{hostname}}</span> 将替换为标签hostname(主机名)的标签值。
       </info-popover>
     </div>
 
     <div class="gf-form">
-      <label class="gf-form-label width-6">Min step</label>
+      <label class="gf-form-label width-6">最小步长</label>
       <input type="text" class="gf-form-input width-8" ng-model="ctrl.target.interval" data-placement="right" spellcheck='false'
         placeholder="{{ctrl.panelCtrl.interval}}" data-min-length=0 data-items=100 ng-model-onblur ng-change="ctrl.refreshMetricData()"
       />
       <info-popover mode="right-absolute">
-        Leave blank for auto handling based on time range and panel width. Note that the actual dates used in the query will be adjusted
-        to a multiple of the interval step.
+        留空则将基于时间范围和面板宽度自动处理。注意，查询中使用的实际日期将被调整为间隔步长的倍数。
       </info-popover>
     </div>
 
     <div class="gf-form">
-      <label class="gf-form-label">Resolution</label>
+      <label class="gf-form-label">分辨率</label>
       <div class="gf-form-select-wrapper max-width-15">
         <select ng-model="ctrl.target.intervalFactor" class="gf-form-input" ng-options="r.factor as r.label for r in ctrl.resolutions"
           ng-change="ctrl.refreshMetricData()">
@@ -40,7 +39,7 @@
     </div>
 
     <div class="gf-form">
-      <label class="gf-form-label width-6">Format as</label>
+      <label class="gf-form-label width-6">格式为</label>
       <div class="gf-form-select-wrapper width-8">
         <select class="gf-form-input gf-size-auto" ng-model="ctrl.target.format" ng-options="f.value as f.text for f in ctrl.formats"
           ng-change="ctrl.refresh()"></select>
@@ -48,7 +47,7 @@
       <gf-form-switch class="gf-form" label="Instant" label-class="width-5" checked="ctrl.target.instant" on-change="ctrl.refresh()">
       </gf-form-switch>
       <label class="gf-form-label">
-        <a href="{{ctrl.linkToPrometheus}}" target="_blank" bs-tooltip="'Link to Graph in Prometheus'">
+        <a href="{{ctrl.linkToPrometheus}}" target="_blank" bs-tooltip="'链接Prometheus中的图表'">
           <i class="fa fa-share-square-o"></i>
         </a>
       </label>

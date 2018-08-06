@@ -21,17 +21,17 @@ class SingleStatCtrl extends MetricsPanelCtrl {
   panel: any;
   events: any;
   valueNameOptions: any[] = [
-    { value: 'min', text: 'Min' },
-    { value: 'max', text: 'Max' },
-    { value: 'avg', text: 'Average' },
-    { value: 'current', text: 'Current' },
-    { value: 'total', text: 'Total' },
-    { value: 'name', text: 'Name' },
-    { value: 'first', text: 'First' },
+    { value: 'min', text: '最小' },
+    { value: 'max', text: '最大' },
+    { value: 'avg', text: '平均' },
+    { value: 'current', text: '当前' },
+    { value: 'total', text: '总和' },
+    { value: 'name', text: '名称' },
+    { value: 'first', text: '首个' },
     { value: 'delta', text: 'Delta' },
-    { value: 'diff', text: 'Difference' },
-    { value: 'range', text: 'Range' },
-    { value: 'last_time', text: 'Time of last point' },
+    { value: 'diff', text: '差值' },
+    { value: 'range', text: '范围' },
+    { value: 'last_time', text: '上个数据点的时间' },
   ];
   tableColumnOptions: any;
 
@@ -92,8 +92,8 @@ class SingleStatCtrl extends MetricsPanelCtrl {
 
   onInitEditMode() {
     this.fontSizes = ['20%', '30%', '50%', '70%', '80%', '100%', '110%', '120%', '150%', '170%', '200%'];
-    this.addEditorTab('Options', 'public/app/plugins/panel/singlestat/editor.html', 2);
-    this.addEditorTab('Value Mappings', 'public/app/plugins/panel/singlestat/mappings.html', 3);
+    this.addEditorTab('选项', 'public/app/plugins/panel/singlestat/editor.html', 2);
+    this.addEditorTab('值映射', 'public/app/plugins/panel/singlestat/mappings.html', 3);
     this.unitFormats = kbn.getUnitFormats();
   }
 

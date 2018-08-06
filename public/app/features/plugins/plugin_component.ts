@@ -245,7 +245,7 @@ function pluginDirectiveLoader($compile, datasourceSrv, $rootScope, $q, $http, $
           registerPluginComponent(scope, elem, attrs, componentInfo);
         })
         .catch(err => {
-          $rootScope.appEvent('alert-error', ['Plugin Error', err.message || err]);
+          $rootScope.appEvent('alert-error', ['插件报错', err.message || err]);
           console.log('Plugin component error', err);
         });
     },

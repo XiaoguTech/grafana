@@ -1,22 +1,22 @@
 <div class="gf-form-group">
 	<div class="gf-form-inline">
 		<div class="gf-form">
-			<span class="gf-form-label width-10">Mode</span>
+			<span class="gf-form-label width-10">模式</span>
 			<div class="gf-form-select-wrapper max-width-10">
 				<select class="gf-form-input" ng-model="ctrl.panel.mode" ng-options="f for f in ctrl.modes" ng-change="ctrl.refresh()"></select>
 			</div>
 		</div>
 		<div class="gf-form" ng-show="ctrl.panel.mode === 'recently viewed'">
 			<span class="gf-form-label">
-				<i class="grafana-tip fa fa-question-circle ng-scope" bs-tooltip="'WARNING: This list will be cleared when clearing browser cache'" data-original-title="" title=""></i>
+				<i class="grafana-tip fa fa-question-circle ng-scope" bs-tooltip="'警告：当清除浏览器缓存时，此列表将被清除'" data-original-title="" title=""></i>
 			</span>
 		</div>
 	</div>
 
 	<div class="gf-form-inline" ng-if="ctrl.panel.mode === 'search'">
 		<div class="gf-form">
-			<span class="gf-form-label width-10">Search options</span>
-			<span class="gf-form-label">Query</span>
+			<span class="gf-form-label width-10">搜索选项</span>
+			<span class="gf-form-label">查询</span>
 
 			<input type="text" class="gf-form-input" placeholder="title query"
 				ng-model="ctrl.panel.query" ng-change="ctrl.refresh()" ng-model-onblur>
@@ -24,16 +24,16 @@
 		</div>
 
 		<div class="gf-form">
-			<span class="gf-form-label">Tags</span>
+			<span class="gf-form-label">标签</span>
 
-			<bootstrap-tagsinput ng-model="ctrl.panel.tags" tagclass="label label-tag" placeholder="add tags" on-tags-updated="ctrl.refresh()">
+			<bootstrap-tagsinput ng-model="ctrl.panel.tags" tagclass="label label-tag" placeholder="添加标签" on-tags-updated="ctrl.refresh()">
 			</bootstrap-tagsinput>
 		</div>
 	</div>
 
 	<div class="gf-form-inline">
 		<div class="gf-form">
-			<span class="gf-form-label width-10">Limit number to</span>
+			<span class="gf-form-label width-10">限制结果条数为</span>
 			<input class="gf-form-input" type="number" ng-model="ctrl.panel.limit" ng-model-onblur ng-change="ctrl.refresh()">
 		</div>
 	</div>
