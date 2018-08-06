@@ -15,7 +15,7 @@ var alertQueryDef = new QueryPartDef({
   defaultParams: ['#A', '15m', 'now', 'avg'],
 });
 
-var conditionTypes = [{ text: 'Query', value: 'query' }];
+var conditionTypes = [{ text: '查询', value: 'query' }];
 
 var alertStateSortScore = {
   alerting: 1,

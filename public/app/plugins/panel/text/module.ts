@@ -33,7 +33,7 @@ export class TextPanelCtrl extends PanelCtrl {
   }
 
   onInitEditMode() {
-    this.addEditorTab('Options', 'public/app/plugins/panel/text/editor.html');
+    this.addEditorTab('选项', 'public/app/plugins/panel/text/editor.html');
     this.editorTabIndex = 1;
 
     if (this.panel.mode === 'text') {

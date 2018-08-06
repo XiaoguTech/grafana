@@ -34,9 +34,9 @@ class DashListCtrl extends PanelCtrl {
     this.events.on('init-edit-mode', this.onInitEditMode.bind(this));
 
     this.groups = [
-      { list: [], show: false, header: 'Starred dashboards' },
-      { list: [], show: false, header: 'Recently viewed dashboards' },
-      { list: [], show: false, header: 'Search' },
+      { list: [], show: false, header: '收藏的仪表盘' },
+      { list: [], show: false, header: '最近查看的仪表盘' },
+      { list: [], show: false, header: '搜索' },
     ];
 
     // update capability
@@ -62,7 +62,7 @@ class DashListCtrl extends PanelCtrl {
   onInitEditMode() {
     this.editorTabIndex = 1;
     this.modes = ['starred', 'search', 'recently viewed'];
-    this.addEditorTab('Options', 'public/app/plugins/panel/dashlist/editor.html');
+    this.addEditorTab('选项', 'public/app/plugins/panel/dashlist/editor.html');
   }
 
   onRefresh() {

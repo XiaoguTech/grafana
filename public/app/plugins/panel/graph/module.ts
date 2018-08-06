@@ -133,20 +133,20 @@ class GraphCtrl extends MetricsPanelCtrl {
   }
 
   onInitEditMode() {
-    this.addEditorTab('Axes', axesEditorComponent, 2);
-    this.addEditorTab('Legend', 'public/app/plugins/panel/graph/tab_legend.html', 3);
-    this.addEditorTab('Display', 'public/app/plugins/panel/graph/tab_display.html', 4);
+    this.addEditorTab('坐标轴', axesEditorComponent, 2);
+    this.addEditorTab('图例', 'public/app/plugins/panel/graph/tab_legend.html', 3);
+    this.addEditorTab('展示', 'public/app/plugins/panel/graph/tab_display.html', 4);
 
     if (config.alertingEnabled) {
-      this.addEditorTab('Alert', alertTab, 5);
+      this.addEditorTab('报警', alertTab, 5);
     }
 
     this.subTabIndex = 0;
   }
 
   onInitPanelActions(actions) {
-    actions.push({ text: 'Export CSV', click: 'ctrl.exportCsv()' });
-    actions.push({ text: 'Toggle legend', click: 'ctrl.toggleLegend()' });
+    actions.push({ text: '导出 CSV', click: 'ctrl.exportCsv()' });
+    actions.push({ text: '启用图例', click: 'ctrl.toggleLegend()' });
   }
 
   issueQueries(datasource) {
@@ -191,15 +191,15 @@ class GraphCtrl extends MetricsPanelCtrl {
 
     if (datapointsCount === 0) {
       this.dataWarning = {
-        title: 'No data points',
-        tip: 'No datapoints returned from data query',
+        title: '暂无数据点',
+        tip: '数据查询中无数据点返回',
       };
     } else {
       for (let series of this.seriesList) {
         if (series.isOutsideRange) {
           this.dataWarning = {
-            title: 'Data points outside time range',
-            tip: 'Can be caused by timezone mismatch or missing time filter in query',
+            title: '数据点不在时间范围内',
+            tip: '由时区失配或时间过滤设置不当引起',
           };
           break;
         }

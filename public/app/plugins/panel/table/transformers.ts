@@ -6,7 +6,7 @@ import TableModel from '../../../core/table_model';
 var transformers = {};
 
 transformers['timeseries_to_rows'] = {
-  description: 'Time series to rows',
+  description: '时间序列转到行',
   getColumns: function() {
     return [];
   },
@@ -24,12 +24,12 @@ transformers['timeseries_to_rows'] = {
 };
 
 transformers['timeseries_to_columns'] = {
-  description: 'Time series to columns',
+  description: '时间序列转到列',
   getColumns: function() {
     return [];
   },
   transform: function(data, panel, model) {
-    model.columns.push({ text: 'Time', type: 'date' });
+    model.columns.push({ text: '日期', type: 'date' });
 
     // group by time
     var points = {};
@@ -66,7 +66,7 @@ transformers['timeseries_to_columns'] = {
 };
 
 transformers['timeseries_aggregations'] = {
-  description: 'Time series aggregations',
+  description: '时间序列聚合',
   getColumns: function() {
     return [
       { text: 'Avg', value: 'avg' },
@@ -104,15 +104,15 @@ transformers['timeseries_aggregations'] = {
 };
 
 transformers['annotations'] = {
-  description: 'Annotations',
+  description: '注释',
   getColumns: function() {
     return [];
   },
   transform: function(data, panel, model) {
-    model.columns.push({ text: 'Time', type: 'date' });
-    model.columns.push({ text: 'Title' });
-    model.columns.push({ text: 'Text' });
-    model.columns.push({ text: 'Tags' });
+    model.columns.push({ text: '日期', type: 'date' });
+    model.columns.push({ text: '标题' });
+    model.columns.push({ text: '文本' });
+    model.columns.push({ text: '标签' });
 
     if (!data || !data.annotations || data.annotations.length === 0) {
       return;
@@ -126,7 +126,7 @@ transformers['annotations'] = {
 };
 
 transformers['table'] = {
-  description: 'Table',
+  description: '表格',
   getColumns: function(data) {
     if (!data || data.length === 0) {
       return [];
@@ -162,9 +162,9 @@ transformers['table'] = {
     const noTableIndex = _.findIndex(data, d => d.type !== 'table');
     if (noTableIndex > -1) {
       throw {
-        message: `Result of query #${String.fromCharCode(
+        message: `查询为 #${String.fromCharCode(
           65 + noTableIndex
-        )} is not in table format, try using another transform.`,
+        )} 的结果不是表格格式，尝试使用其他的转换格式。`,
       };
     }
 
@@ -263,7 +263,7 @@ transformers['table'] = {
 };
 
 transformers['json'] = {
-  description: 'JSON Data',
+  description: 'JSON 数据',
   getColumns: function(data) {
     if (!data || data.length === 0) {
       return [];

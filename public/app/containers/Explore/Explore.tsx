@@ -401,13 +401,13 @@ export class Explore extends React.Component<any, IExploreState> {
             <div>
               <a className="navbar-page-btn">
                 <i className="fa fa-rocket" />
-                Explore
+                探索
               </a>
             </div>
           ) : (
               <div className="navbar-buttons explore-first-button">
                 <button className="btn navbar-button" onClick={this.handleClickCloseSplit}>
-                  Close Split
+                  关闭分隔
               </button>
               </div>
             )}
@@ -427,44 +427,44 @@ export class Explore extends React.Component<any, IExploreState> {
           {position === 'left' && !split ? (
             <div className="navbar-buttons">
               <button className="btn navbar-button" onClick={this.handleClickSplit}>
-                Split
+                分隔
               </button>
             </div>
           ) : null}
           <div className="navbar-buttons">
             {supportsGraph ? (
               <button className={`btn navbar-button ${graphButtonActive}`} onClick={this.handleClickGraphButton}>
-                Graph
+                图形
               </button>
             ) : null}
             {supportsTable ? (
               <button className={`btn navbar-button ${tableButtonActive}`} onClick={this.handleClickTableButton}>
-                Table
+                表格
               </button>
             ) : null}
             {supportsLogs ? (
               <button className={`btn navbar-button ${logsButtonActive}`} onClick={this.handleClickLogsButton}>
-                Logs
+                日志
               </button>
             ) : null}
           </div>
           <TimePicker range={range} onChangeTime={this.handleChangeTime} />
           <div className="navbar-buttons relative">
             <button className="btn navbar-button--primary" onClick={this.handleSubmit}>
-              Run Query <i className="fa fa-level-down run-icon" />
+              执行查询 <i className="fa fa-level-down run-icon" />
             </button>
             {loading || latency ? <ElapsedTime time={latency} className="text-info" /> : null}
           </div>
         </div>
 
-        {datasourceLoading ? <div className="explore-container">Loading datasource...</div> : null}
+        {datasourceLoading ? <div className="explore-container">加载数据源...</div> : null}
 
         {datasourceMissing ? (
-          <div className="explore-container">Please add a datasource that supports Explore (e.g., Prometheus).</div>
+          <div className="explore-container">请添加一个数据源以供更多操作 (例如, Prometheus数据源).</div>
         ) : null}
 
         {datasourceError ? (
-          <div className="explore-container">Error connecting to datasource. [{datasourceError}]</div>
+          <div className="explore-container">连接数据源出错. [{datasourceError}]</div>
         ) : null}
 
         {datasource && !datasourceError ? (
