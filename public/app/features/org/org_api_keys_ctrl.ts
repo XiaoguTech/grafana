@@ -14,13 +14,13 @@ export class OrgApiKeysCtrl {
 
     $scope.getTokens = function() {
       backendSrv.get('/api/auth/keys').then(function(tokens) {
-        angular.forEach(tokens, (obj, index)=>{
-          angular.forEach($scope.roleTypes, (obj2, index2)=>{
+        angular.forEach(tokens, (obj, index) => {
+          angular.forEach($scope.roleTypes, (obj2, index2) => {
             if (obj.role === obj2.value) {
-              tokens[index].roleText = obj2.text
+              tokens[index].roleText = obj2.text;
             }
-          })
-        })
+          });
+        });
         $scope.tokens = tokens;
       });
     };
