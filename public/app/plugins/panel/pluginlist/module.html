@@ -10,20 +10,20 @@
           <span class="pluginlist-title">{{plugin.name}}</span>
           <span class="pluginlist-version">v{{plugin.info.version}}</span>
         </span>
-        <span class="pluginlist-message pluginlist-message--update" ng-show="plugin.hasUpdate" ng-click="ctrl.updateAvailable(plugin, $event)" bs-tooltip="'New version: ' + plugin.latestVersion">
-          Update available!
+        <span class="pluginlist-message pluginlist-message--update" ng-show="plugin.hasUpdate" ng-click="ctrl.updateAvailable(plugin, $event)" bs-tooltip="'新版本: ' + plugin.latestVersion">
+          有可用更新!
         </span>
         <span class="pluginlist-message pluginlist-message--enable" ng-show="!plugin.enabled && !plugin.hasUpdate">
-          Enable now
+          现在启用
         </span>
         <span class="pluginlist-message pluginlist-message--no-update" ng-show="plugin.enabled && !plugin.hasUpdate">
-          Up to date
+          更新到最新
         </span>
       </a>
     </div>
     <div class="pluginlist-item" ng-show="category.list.length === 0">
       <a class="pluginlist-link pluginlist-link-{{plugin.state}}" href="https://grafana.com/plugins">
-        <span class="pluginlist-none-installed">None installed. <span class="pluginlist-emphasis">Browse Grafana.com</span></span>
+        <span class="pluginlist-none-installed">无安装. <span class="pluginlist-emphasis">浏览 Grafana.com</span></span>
       </a>
     </div>
   </div>

@@ -23,7 +23,7 @@ class TablePanelCtrl extends MetricsPanelCtrl {
       {
         type: 'date',
         pattern: 'Time',
-        alias: 'Time',
+        alias: '日期',
         dateFormat: 'YYYY-MM-DD HH:mm:ss',
       },
       {
@@ -66,12 +66,12 @@ class TablePanelCtrl extends MetricsPanelCtrl {
   }
 
   onInitEditMode() {
-    this.addEditorTab('Options', tablePanelEditor, 2);
-    this.addEditorTab('Column Styles', columnOptionsTab, 3);
+    this.addEditorTab('选项', tablePanelEditor, 2);
+    this.addEditorTab('列风格', columnOptionsTab, 3);
   }
 
   onInitPanelActions(actions) {
-    actions.push({ text: 'Export CSV', click: 'ctrl.exportCsv()' });
+    actions.push({ text: '导出 CSV', click: 'ctrl.exportCsv()' });
   }
 
   issueQueries(datasource) {

@@ -6,7 +6,7 @@
 	<div class="search-field-wrapper">
 		<div class="search-field-icon pointer" ng-click="ctrl.closeSearch()"><i class="fa fa-search"></i></div>
 
-		<input type="text" placeholder="Find dashboards by name" give-focus="ctrl.giveSearchFocus" tabindex="1"
+		<input type="text" placeholder="通过名称查找仪表盘" give-focus="ctrl.giveSearchFocus" tabindex="1"
 						ng-keydown="ctrl.keyDown($event)"
 						ng-model="ctrl.query.query"
 						ng-model-options="{ debounce: 500 }"

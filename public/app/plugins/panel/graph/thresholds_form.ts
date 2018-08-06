@@ -60,11 +60,11 @@ export class ThresholdFormCtrl {
 
 var template = `
 <div class="gf-form-group">
-  <h5>Thresholds</h5>
+  <h5>阈值</h5>
   <p class="muted" ng-show="ctrl.disabled">
-    Visual thresholds options <strong>disabled.</strong>
-    Visit the Alert tab update your thresholds. <br>
-    To re-enable thresholds, the alert rule must be deleted from this panel.
+    <strong>已禁用</strong>查看阈值选项
+    查看报警选项卡更新阈值。 <br>
+    要重新启用阈值，必须从该面板中删除报警规则。
   </p>
   <div ng-class="{'thresholds-form-disabled': ctrl.disabled}">
     <div class="gf-form-inline" ng-repeat="threshold in ctrl.panel.thresholds">
@@ -78,11 +78,11 @@ var template = `
                   ng-options="f for f in ['gt', 'lt']" ng-change="ctrl.render()" ng-disabled="ctrl.disabled"></select>
         </div>
         <input type="number" ng-model="threshold.value" class="gf-form-input width-8"
-               ng-change="ctrl.render()" placeholder="value" ng-disabled="ctrl.disabled">
+               ng-change="ctrl.render()" placeholder="值" ng-disabled="ctrl.disabled">
       </div>
 
       <div class="gf-form">
-        <label class="gf-form-label">Color</label>
+        <label class="gf-form-label">颜色</label>
         <div class="gf-form-select-wrapper">
           <select class="gf-form-input" ng-model="threshold.colorMode"
                   ng-options="f for f in ['custom', 'critical', 'warning', 'ok']" ng-change="ctrl.render()" ng-disabled="ctrl.disabled">
@@ -94,24 +94,24 @@ var template = `
                       on-change="ctrl.render()" ng-disabled="ctrl.disabled"></gf-form-switch>
 
       <div class="gf-form" ng-if="threshold.fill && threshold.colorMode === 'custom'">
-        <label class="gf-form-label">Fill color</label>
+        <label class="gf-form-label">填充颜色</label>
         <span class="gf-form-label">
           <color-picker color="threshold.fillColor" onChange="ctrl.onFillColorChange($index)"></color-picker>
         </span>
       </div>
 
-      <gf-form-switch class="gf-form" label="Line" checked="threshold.line"
+      <gf-form-switch class="gf-form" label="线段" checked="threshold.line"
                       on-change="ctrl.render()" ng-disabled="ctrl.disabled"></gf-form-switch>
 
       <div class="gf-form" ng-if="threshold.line && threshold.colorMode === 'custom'">
-        <label class="gf-form-label">Line color</label>
+        <label class="gf-form-label">线段颜色</label>
         <span class="gf-form-label">
           <color-picker color="threshold.lineColor" onChange="ctrl.onLineColorChange($index)"></color-picker>
         </span>
       </div>
 
       <div class="gf-form">
-        <label class="gf-form-label">Y-Axis</label>
+        <label class="gf-form-label">Y-轴</label>
         <div class="gf-form-select-wrapper">
           <select class="gf-form-input" ng-model="threshold.yaxis"
                   ng-init="threshold.yaxis = threshold.yaxis === 'left' || threshold.yaxis === 'right' ? threshold.yaxis : 'left'"

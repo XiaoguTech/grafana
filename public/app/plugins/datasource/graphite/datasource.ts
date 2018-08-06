@@ -22,7 +22,7 @@ export function GraphiteDatasource(instanceSettings, $q, backendSrv, templateSrv
       cacheTimeout: true,
       links: [
         {
-          text: 'Help',
+          text: '帮助',
           url: 'http://docs.grafana.org/features/datasources/graphite/#using-graphite-in-grafana',
         },
       ],

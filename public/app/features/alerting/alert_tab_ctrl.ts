@@ -170,7 +170,7 @@ export class AlertTabCtrl {
     alert.handler = alert.handler || 1;
     alert.notifications = alert.notifications || [];
 
-    var defaultName = this.panel.title + ' alert';
+    var defaultName = this.panel.title + ' 报警';
     alert.name = alert.name || defaultName;
 
     this.conditionModels = _.reduce(
