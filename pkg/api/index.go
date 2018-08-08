@@ -95,7 +95,7 @@ func setIndexViewData(c *m.ReqContext) (*dtos.IndexViewData, error) {
 
 	if hasEditPermissionInFoldersQuery.Result {
 		children := []*dtos.NavLink{
-			{Text: "Dashboard", Icon: "gicon gicon-dashboard-new", Url: setting.AppSubUrl + "/dashboard/new"},
+			{Text: "仪表盘", Icon: "gicon gicon-dashboard-new", Url: setting.AppSubUrl + "/dashboard/new"},
 		}
 
 		if c.OrgRole == m.ROLE_ADMIN || c.OrgRole == m.ROLE_EDITOR {

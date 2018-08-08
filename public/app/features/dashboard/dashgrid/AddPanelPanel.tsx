@@ -143,7 +143,7 @@ export class AddPanelPanel extends React.Component<AddPanelPanelProps, AddPanelP
   }
 
   noCopiedPanelPlugins() {
-    return <div className="add-panel__no-panels">No copied panels yet.</div>;
+    return <div className="add-panel__no-panels">暂无面板副本。</div>;
   }
 
   filterChange(evt) {
