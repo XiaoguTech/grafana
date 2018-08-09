@@ -6,6 +6,7 @@
 
 # 相关链接
 [demo效果展示链接](https://xg-grafana.herokuapp.com)
+
 ## 账号
 - 用户名：admin
 - 密码：admin

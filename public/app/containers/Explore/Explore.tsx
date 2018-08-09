@@ -19,6 +19,16 @@ import { ensureQueries, generateQueryKey, hasQuery } from './utils/query';
 
 const MAX_HISTORY_ITEMS = 100;
 
+function makeHints(hints) {
+  const hintsByIndex = [];
+  hints.forEach(hint => {
+    if (hint) {
+      hintsByIndex[hint.index] = hint;
+    }
+  });
+  return hintsByIndex;
+}
+
 function makeTimeSeriesList(dataList, options) {
   return dataList.map((seriesData, index) => {
     const datapoints = seriesData.datapoints || [];
@@ -37,7 +47,7 @@ function makeTimeSeriesList(dataList, options) {
   });
 }
 
-function parseInitialState(initial: string | undefined) {
+function parseUrlState(initial: string | undefined) {
   if (initial) {
     try {
       const parsed = JSON.parse(decodePathComponent(initial));
@@ -64,8 +74,9 @@ interface IExploreState {
   latency: number;
   loading: any;
   logsResult: any;
-  queries: any;
-  queryError: any;
+  queries: any[];
+  queryErrors: any[];
+  queryHints: any[];
   range: any;
   requestOptions: any;
   showingGraph: boolean;
@@ -82,7 +93,8 @@ export class Explore extends React.Component<any, IExploreState> {
 
   constructor(props) {
     super(props);
-    const { datasource, queries, range } = parseInitialState(props.routeParams.state);
+    const initialState: IExploreState = props.initialState;
+    const { datasource, queries, range } = parseUrlState(props.routeParams.state);
     this.state = {
       datasource: null,
       datasourceError: null,
@@ -95,7 +107,8 @@ export class Explore extends React.Component<any, IExploreState> {
       loading: false,
       logsResult: null,
       queries: ensureQueries(queries),
-      queryError: null,
+      queryErrors: [],
+      queryHints: [],
       range: range || { ...DEFAULT_RANGE },
       requestOptions: null,
       showingGraph: true,
@@ -105,7 +118,7 @@ export class Explore extends React.Component<any, IExploreState> {
       supportsLogs: null,
       supportsTable: null,
       tableResult: null,
-      ...props.initialState,
+      ...initialState,
     };
   }
 
@@ -166,7 +179,7 @@ export class Explore extends React.Component<any, IExploreState> {
         supportsTable,
         datasourceLoading: false,
       },
-      () => datasourceError === null && this.handleSubmit()
+      () => datasourceError === null && this.onSubmit()
     );
   }
 
@@ -174,7 +187,7 @@ export class Explore extends React.Component<any, IExploreState> {
     this.el = el;
   };
 
-  handleAddQueryRow = index => {
+  onAddQueryRow = index => {
     const { queries } = this.state;
     const nextQueries = [
       ...queries.slice(0, index + 1),
@@ -184,23 +197,26 @@ export class Explore extends React.Component<any, IExploreState> {
     this.setState({ queries: nextQueries });
   };
 
-  handleChangeDatasource = async option => {
+  onChangeDatasource = async option => {
     this.setState({
       datasource: null,
       datasourceError: null,
       datasourceLoading: true,
       graphResult: null,
       logsResult: null,
+      queryErrors: [],
+      queryHints: [],
       tableResult: null,
     });
     const datasource = await this.props.datasourceSrv.get(option.value);
     this.setDatasource(datasource);
   };
 
-  handleChangeQuery = (value, index) => {
+  onChangeQuery = (value: string, index: number, override?: boolean) => {
     const { queries } = this.state;
+    let { queryErrors, queryHints } = this.state;
     const prevQuery = queries[index];
-    const edited = prevQuery.query !== value;
+    const edited = override ? false : prevQuery.query !== value;
     const nextQuery = {
       ...queries[index],
       edited,
@@ -208,53 +224,104 @@ export class Explore extends React.Component<any, IExploreState> {
     };
     const nextQueries = [...queries];
     nextQueries[index] = nextQuery;
-    this.setState({ queries: nextQueries });
+    if (override) {
+      queryErrors = [];
+      queryHints = [];
+    }
+    this.setState(
+      {
+        queryErrors,
+        queryHints,
+        queries: nextQueries,
+      },
+      override ? () => this.onSubmit() : undefined
+    );
   };
 
-  handleChangeTime = nextRange => {
+  onChangeTime = nextRange => {
     const range = {
       from: nextRange.from,
       to: nextRange.to,
     };
-    this.setState({ range }, () => this.handleSubmit());
+    this.setState({ range }, () => this.onSubmit());
   };
 
-  handleClickCloseSplit = () => {
+  onClickClear = () => {
+    this.setState({
+      graphResult: null,
+      logsResult: null,
+      queries: ensureQueries(),
+      tableResult: null,
+    });
+  };
+
+  onClickCloseSplit = () => {
     const { onChangeSplit } = this.props;
     if (onChangeSplit) {
       onChangeSplit(false);
     }
   };
 
-  handleClickGraphButton = () => {
+  onClickGraphButton = () => {
     this.setState(state => ({ showingGraph: !state.showingGraph }));
   };
 
-  handleClickLogsButton = () => {
+  onClickLogsButton = () => {
     this.setState(state => ({ showingLogs: !state.showingLogs }));
   };
 
-  handleClickSplit = () => {
+  onClickSplit = () => {
     const { onChangeSplit } = this.props;
     if (onChangeSplit) {
       onChangeSplit(true, this.state);
     }
   };
 
-  handleClickTableButton = () => {
+  onClickTableButton = () => {
     this.setState(state => ({ showingTable: !state.showingTable }));
   };
 
-  handleRemoveQueryRow = index => {
+  onClickTableCell = (columnKey: string, rowValue: string) => {
+    this.onModifyQueries({ type: 'ADD_FILTER', key: columnKey, value: rowValue });
+  };
+
+  onModifyQueries = (action: object, index?: number) => {
+    const { datasource, queries } = this.state;
+    if (datasource && datasource.modifyQuery) {
+      let nextQueries;
+      if (index === undefined) {
+        // Modify all queries
+        nextQueries = queries.map(q => ({
+          ...q,
+          edited: false,
+          query: datasource.modifyQuery(q.query, action),
+        }));
+      } else {
+        // Modify query only at index
+        nextQueries = [
+          ...queries.slice(0, index),
+          {
+            ...queries[index],
+            edited: false,
+            query: datasource.modifyQuery(queries[index].query, action),
+          },
+          ...queries.slice(index + 1),
+        ];
+      }
+      this.setState({ queries: nextQueries }, () => this.onSubmit());
+    }
+  };
+
+  onRemoveQueryRow = index => {
     const { queries } = this.state;
     if (queries.length <= 1) {
       return;
     }
     const nextQueries = [...queries.slice(0, index), ...queries.slice(index + 1)];
-    this.setState({ queries: nextQueries }, () => this.handleSubmit());
+    this.setState({ queries: nextQueries }, () => this.onSubmit());
   };
 
-  handleSubmit = () => {
+  onSubmit = () => {
     const { showingLogs, showingGraph, showingTable, supportsGraph, supportsLogs, supportsTable } = this.state;
     if (showingTable && supportsTable) {
       this.runTableQuery();
@@ -264,18 +331,6 @@ export class Explore extends React.Component<any, IExploreState> {
     }
     if (showingLogs && supportsLogs) {
       this.runLogsQuery();
-    }
-  };
-
-  onClickTableCell = (columnKey: string, rowValue: string) => {
-    const { datasource, queries } = this.state;
-    if (datasource && datasource.modifyQuery) {
-      const nextQueries = queries.map(q => ({
-        ...q,
-        edited: false,
-        query: datasource.modifyQuery(q.query, { addFilter: { key: columnKey, value: rowValue } }),
-      }));
-      this.setState({ queries: nextQueries }, () => this.handleSubmit());
     }
   };
 
@@ -300,7 +355,7 @@ export class Explore extends React.Component<any, IExploreState> {
     this.setState({ history });
   }
 
-  buildQueryOptions(targetOptions: { format: string; instant?: boolean }) {
+  buildQueryOptions(targetOptions: { format: string; hinting?: boolean; instant?: boolean }) {
     const { datasource, queries, range } = this.state;
     const resolution = this.el.offsetWidth;
     const absoluteRange = {
@@ -324,19 +379,20 @@ export class Explore extends React.Component<any, IExploreState> {
     if (!hasQuery(queries)) {
       return;
     }
-    this.setState({ latency: 0, loading: true, graphResult: null, queryError: null });
+    this.setState({ latency: 0, loading: true, graphResult: null, queryErrors: [], queryHints: [] });
     const now = Date.now();
-    const options = this.buildQueryOptions({ format: 'time_series', instant: false });
+    const options = this.buildQueryOptions({ format: 'time_series', instant: false, hinting: true });
     try {
       const res = await datasource.query(options);
       const result = makeTimeSeriesList(res.data, options);
+      const queryHints = res.hints ? makeHints(res.hints) : [];
       const latency = Date.now() - now;
-      this.setState({ latency, loading: false, graphResult: result, requestOptions: options });
+      this.setState({ latency, loading: false, graphResult: result, queryHints, requestOptions: options });
       this.onQuerySuccess(datasource.meta.id, queries);
     } catch (response) {
       console.error(response);
       const queryError = response.data ? response.data.error : response;
-      this.setState({ loading: false, queryError });
+      this.setState({ loading: false, queryErrors: [queryError] });
     }
   }
 
@@ -345,7 +401,7 @@ export class Explore extends React.Component<any, IExploreState> {
     if (!hasQuery(queries)) {
       return;
     }
-    this.setState({ latency: 0, loading: true, queryError: null, tableResult: null });
+    this.setState({ latency: 0, loading: true, queryErrors: [], queryHints: [], tableResult: null });
     const now = Date.now();
     const options = this.buildQueryOptions({
       format: 'table',
@@ -360,7 +416,7 @@ export class Explore extends React.Component<any, IExploreState> {
     } catch (response) {
       console.error(response);
       const queryError = response.data ? response.data.error : response;
-      this.setState({ loading: false, queryError });
+      this.setState({ loading: false, queryErrors: [queryError] });
     }
   }
 
@@ -369,7 +425,7 @@ export class Explore extends React.Component<any, IExploreState> {
     if (!hasQuery(queries)) {
       return;
     }
-    this.setState({ latency: 0, loading: true, queryError: null, logsResult: null });
+    this.setState({ latency: 0, loading: true, queryErrors: [], queryHints: [], logsResult: null });
     const now = Date.now();
     const options = this.buildQueryOptions({
       format: 'logs',
@@ -384,7 +440,7 @@ export class Explore extends React.Component<any, IExploreState> {
     } catch (response) {
       console.error(response);
       const queryError = response.data ? response.data.error : response;
-      this.setState({ loading: false, queryError });
+      this.setState({ loading: false, queryErrors: [queryError] });
     }
   }
 
@@ -406,7 +462,8 @@ export class Explore extends React.Component<any, IExploreState> {
       loading,
       logsResult,
       queries,
-      queryError,
+      queryErrors,
+      queryHints,
       range,
       requestOptions,
       showingGraph,
@@ -440,18 +497,18 @@ export class Explore extends React.Component<any, IExploreState> {
               </a>
             </div>
           ) : (
-              <div className="navbar-buttons explore-first-button">
-                <button className="btn navbar-button" onClick={this.handleClickCloseSplit}>
-                  关闭分隔
+            <div className="navbar-buttons explore-first-button">
+              <button className="btn navbar-button" onClick={this.onClickCloseSplit}>
+                关闭分隔
               </button>
-              </div>
-            )}
+            </div>
+          )}
           {!datasourceMissing ? (
             <div className="navbar-buttons">
               <Select
                 className="datasource-picker"
                 clearable={false}
-                onChange={this.handleChangeDatasource}
+                onChange={this.onChangeDatasource}
                 options={datasources}
                 placeholder="加载数据源..."
                 value={selectedDatasource}
@@ -461,31 +518,19 @@ export class Explore extends React.Component<any, IExploreState> {
           <div className="navbar__spacer" />
           {position === 'left' && !split ? (
             <div className="navbar-buttons">
-              <button className="btn navbar-button" onClick={this.handleClickSplit}>
+              <button className="btn navbar-button" onClick={this.onClickSplit}>
                 分隔
               </button>
             </div>
           ) : null}
+          <TimePicker range={range} onChangeTime={this.onChangeTime} />
           <div className="navbar-buttons">
-            {supportsGraph ? (
-              <button className={`btn navbar-button ${graphButtonActive}`} onClick={this.handleClickGraphButton}>
-                图形
-              </button>
-            ) : null}
-            {supportsTable ? (
-              <button className={`btn navbar-button ${tableButtonActive}`} onClick={this.handleClickTableButton}>
-                表格
-              </button>
-            ) : null}
-            {supportsLogs ? (
-              <button className={`btn navbar-button ${logsButtonActive}`} onClick={this.handleClickLogsButton}>
-                日志
-              </button>
-            ) : null}
+            <button className="btn navbar-button navbar-button--no-icon" onClick={this.onClickClear}>
+              清除所有
+            </button>
           </div>
-          <TimePicker range={range} onChangeTime={this.handleChangeTime} />
           <div className="navbar-buttons relative">
-            <button className="btn navbar-button--primary" onClick={this.handleSubmit}>
+            <button className="btn navbar-button--primary" onClick={this.onSubmit}>
               执行查询 <i className="fa fa-level-down run-icon" />
             </button>
             {loading || latency ? <ElapsedTime time={latency} className="text-info" /> : null}
@@ -507,13 +552,33 @@ export class Explore extends React.Component<any, IExploreState> {
             <QueryRows
               history={history}
               queries={queries}
+              queryErrors={queryErrors}
+              queryHints={queryHints}
               request={this.request}
-              onAddQueryRow={this.handleAddQueryRow}
-              onChangeQuery={this.handleChangeQuery}
-              onExecuteQuery={this.handleSubmit}
-              onRemoveQueryRow={this.handleRemoveQueryRow}
+              onAddQueryRow={this.onAddQueryRow}
+              onChangeQuery={this.onChangeQuery}
+              onClickHintFix={this.onModifyQueries}
+              onExecuteQuery={this.onSubmit}
+              onRemoveQueryRow={this.onRemoveQueryRow}
             />
-            {queryError && !loading ? <div className="text-warning m-a-2">{queryError}</div> : null}
+            <div className="result-options">
+              {supportsGraph ? (
+                <button className={`btn navbar-button ${graphButtonActive}`} onClick={this.onClickGraphButton}>
+                  图形
+                </button>
+              ) : null}
+              {supportsTable ? (
+                <button className={`btn navbar-button ${tableButtonActive}`} onClick={this.onClickTableButton}>
+                  表格
+                </button>
+              ) : null}
+              {supportsLogs ? (
+                <button className={`btn navbar-button ${logsButtonActive}`} onClick={this.onClickLogsButton}>
+                  日志
+                </button>
+              ) : null}
+            </div>
+
             <main className="m-t-2">
               {supportsGraph && showingGraph ? (
                 <Graph
