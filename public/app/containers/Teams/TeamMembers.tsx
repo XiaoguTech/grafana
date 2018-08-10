@@ -2,9 +2,9 @@ import React from 'react';
 import { hot } from 'react-hot-loader';
 import { observer } from 'mobx-react';
 import { ITeam, ITeamMember } from 'app/stores/TeamsStore/TeamsStore';
-import appEvents from 'app/core/app_events';
 import SlideDown from 'app/core/components/Animations/SlideDown';
 import { UserPicker, User } from 'app/core/components/Picker/UserPicker';
+import DeleteButton from 'app/core/components/DeleteButton/DeleteButton';
 
 interface Props {
   team: ITeam;
@@ -31,15 +31,7 @@ export class TeamMembers extends React.Component<Props, State> {
   };
 
   removeMember(member: ITeamMember) {
-    appEvents.emit('confirm-modal', {
-      title: '移除成员',
-      text: '确定移除组内成员' + member.login + '?',
-      yesText: '移除',
-      icon: 'fa-warning',
-      onConfirm: () => {
-        this.removeMemberConfirmed(member);
-      },
-    });
+    this.props.team.removeMember(member);
   }
 
   removeMemberConfirmed(member: ITeamMember) {
@@ -54,10 +46,8 @@ export class TeamMembers extends React.Component<Props, State> {
         </td>
         <td>{member.login}</td>
         <td>{member.email}</td>
-        <td style={{ width: '1%' }}>
-          <a onClick={() => this.removeMember(member)} className="btn btn-danger btn-mini">
-            <i className="fa fa-remove" />
-          </a>
+        <td className="text-right">
+          <DeleteButton onConfirmDelete={() => this.removeMember(member)} />
         </td>
       </tr>
     );
