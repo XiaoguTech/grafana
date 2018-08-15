@@ -17,7 +17,7 @@ export class HelpCtrl {
         { keys: ['s', 't'], description: '标签视图下打开搜索' },
         { keys: ['esc'], description: '退出编辑/设置视图' },
       ],
-      '仪表盘': [
+      Dashboard: [
         { keys: ['mod+s'], description: '保存仪表板' },
         { keys: ['d', 'r'], description: '刷新所有面板' },
         { keys: ['d', 's'], description: '仪表板设置' },
@@ -25,7 +25,8 @@ export class HelpCtrl {
         { keys: ['d', 'k'], description: '切换 全屏模式(隐藏顶部导航)' },
         { keys: ['d', 'E'], description: '展开所有行' },
         { keys: ['d', 'C'], description: '折叠所有行' },
-        { keys: ['mod+o'], description: '切换共享图形十字准线' },
+        { keys: ['d', 'a'], description: '触发自适应调整面板 (实验特性)' },
+        { keys: ['mod+o'], description: '触发共享图形十字准线' },
       ],
       '面板': [
         { keys: ['e'], description: '切换面板编辑视图' },
