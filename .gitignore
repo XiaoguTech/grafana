@@ -71,9 +71,9 @@ debug.test
 /vendor/**/appengine*
 *.orig
 
-/devenv/dashboards/bulk-testing/*.json
 package-lock.json
 
 
 # ignore public/build in branch locale
 # public/build/*
+/devenv/bulk-dashboards/*.json
