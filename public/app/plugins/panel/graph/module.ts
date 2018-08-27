@@ -196,7 +196,7 @@ class GraphCtrl extends MetricsPanelCtrl {
         tip: '数据查询中无数据点返回',
       };
     } else {
-      for (let series of this.seriesList) {
+      for (const series of this.seriesList) {
         if (series.isOutsideRange) {
           this.dataWarning = {
             title: '数据点不在时间范围内',
@@ -226,7 +226,7 @@ class GraphCtrl extends MetricsPanelCtrl {
       return;
     }
 
-    for (let series of this.seriesList) {
+    for (const series of this.seriesList) {
       series.applySeriesOverrides(this.panel.seriesOverrides);
 
       if (series.unit) {
