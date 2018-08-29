@@ -1,47 +1,66 @@
 <page-header model="ctrl.navModel"></page-header>
 
 <div class="page-container page-body">
-  <div class="page-action-bar">
-    <div class="page-action-bar__spacer"></div>
-    <a class="btn btn-success pull-right" href="playlists/create">
-      <i class="fa fa-plus"></i>
-      添加播放列表
-    </a>
+  <div ng-if="ctrl.playlists.length > 0">
+    <div class="page-action-bar">
+      <div class="page-action-bar__spacer"></div>
+      <a class="btn btn-success pull-right" href="playlists/create">
+        <i class="fa fa-plus"></i>
+        添加播放列表
+      </a>
+    </div>
+
+    <table class="filter-table">
+      <thead>
+        <th>
+          <strong>名称</strong>
+        </th>
+        <th>
+          <strong>初始url</strong>
+        </th>
+        <th style="width: 78px"></th>
+        <th style="width: 78px"></th>
+        <th style="width: 25px"></th>
+      </thead>
+      <tr ng-repeat="playlist in ctrl.playlists">
+        <td>
+          <a href="playlists/edit/{{playlist.id}}">{{playlist.name}}</a>
+        </td>
+        <td>
+          <a href="playlists/play/{{playlist.id}}">playlists/play/{{playlist.id}}</a>
+        </td>
+        <td class="text-center">
+          <a href="playlists/play/{{playlist.id}}" class="btn btn-inverse btn-small">
+            <i class="fa fa-play"></i>
+            播放
+          </a>
+        </td>
+        <td class="text-right">
+          <a href="playlists/edit/{{playlist.id}}" class="btn btn-inverse btn-small">
+            <i class="fa fa-edit"></i>
+            编辑
+          </a>
+        </td>
+        <td class="text-right">
+          <a ng-click="ctrl.removePlaylist(playlist)" class="btn btn-danger btn-small">
+            <i class="fa fa-remove"></i>
+          </a>
+        </td>
+      </tr>
+    </table>
   </div>
 
-  <table class="filter-table">
-    <thead>
-      <th><strong>名称</strong></th>
-      <th><strong>初始url</strong></th>
-      <th style="width: 78px"></th>
-      <th style="width: 78px"></th>
-      <th style="width: 25px"></th>
-    </thead>
-    <tr ng-repeat="playlist in ctrl.playlists">
-      <td>
-				<a href="playlists/edit/{{playlist.id}}">{{playlist.name}}</a>
-      </td>
-      <td >
-				<a href="playlists/play/{{playlist.id}}">playlists/play/{{playlist.id}}</a>
-      </td>
-      <td class="text-center">
-        <a href="playlists/play/{{playlist.id}}" class="btn btn-inverse btn-small">
-          <i class="fa fa-play"></i>
-          播放
-        </a>
-      </td>
-      <td  class="text-right">
-        <a href="playlists/edit/{{playlist.id}}" class="btn btn-inverse btn-small">
-          <i class="fa fa-edit"></i>
-          编辑
-        </a>
-      </td>
-      <td  class="text-right">
-        <a ng-click="ctrl.removePlaylist(playlist)" class="btn btn-danger btn-small">
-          <i class="fa fa-remove"></i>
-        </a>
-      </td>
-    </tr>
-  </table>
+  <div ng-if="ctrl.playlists.length === 0">
+    <empty-list-cta model="{
+      title: '暂无创建的播单',
+      buttonIcon: 'fa fa-plus',
+      buttonLink: 'playlists/create',
+      buttonTitle: ' 创建播单',
+      proTip: '你可以创建Kiosk模式的播单.',
+      proTipLink: 'http://docs.grafana.org/reference/playlist/',
+      proTipLinkTitle: '获得更多',
+      proTipTarget: '_blank'
+    }" />
+  </div>
 
 </div>

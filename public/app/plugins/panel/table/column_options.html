@@ -156,30 +156,35 @@
     <div class="section gf-form-group" ng-if="style.link">
       <h5 class="section-heading">链接</h5>
       <div class="gf-form">
-        <label class="gf-form-label width-9">Url</label>
+        <label class="gf-form-label width-9">
+          Url
+          <info-popover mode="right-normal">
+            <p>Specify an URL (relative or absolute)</p>
+            <span>
+              Use special variables to specify cell values:
+              <br>
+              <em>${__cell}</em> refers to current cell value
+              <br>
+              <em>${__cell_n}</em> refers to Nth column value in current row. Column indexes are started from 0. For instance,
+              <em>${__cell_1}</em> refers to second column's value.
+              <br>
+              <em>${__cell:raw}</em> syntax. By default values are URI encoded. If the value is a complete URL you can disable all encoding using
+            </span>
+          </info-popover>
+        </label>
         <input type="text" class="gf-form-input width-29" ng-model="style.linkUrl" ng-blur="editor.render()" ng-model-onblur data-placement="right">
-        <info-popover mode="right-absolute">
-          <p>指定一个URL (相对或绝对)</p>
-          <span>
-            使用特殊变量指定单元格值:
-            <br>
-            <em>${__cell}</em> 为当前单元格值
-            <br>
-            <em>${__cell_n}</em> 为当前行中的第n列单元格值。 列索引从0开始。例如，
-            <em>${__cell_1}</em> 为第2列单元格值。
-          </span>
-        </info-popover>
       </div>
       <div class="gf-form">
-        <label class="gf-form-label width-9">Tooltip</label>
+        <label class="gf-form-label width-9">
+          提示信息
+          <info-popover mode="right-normal">
+            <p>指定提示信息的链接.</p>
+            <span>
+              当用户悬停鼠标在链接上时显示该标题. 使用和URL一样的变量.
+            </span>
+          </info-popover></label>
         <input type="text" class="gf-form-input width-29" ng-model="style.linkTooltip" ng-blur="editor.render()" ng-model-onblur
           data-placement="right">
-        <info-popover mode="right-absolute">
-          <p>指定链接的提示文本。</p>
-          <span>
-            当用户悬停在链接单元格的链接时出现此标题。使用与URL相同的变量。
-          </span>
-        </info-popover>
       </div>
       <gf-form-switch class="gf-form" label-class="width-9" label="在新标签页打开" checked="style.linkTargetBlank"></gf-form-switch>
     </div>

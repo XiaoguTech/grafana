@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import { QueryPartDef, QueryPart } from 'app/core/components/query_part/query_part';
 
-var alertQueryDef = new QueryPartDef({
+const alertQueryDef = new QueryPartDef({
   type: 'query',
   params: [
     { name: 'queryRefId', type: 'string', dynamicLookup: true },
@@ -15,9 +15,9 @@ var alertQueryDef = new QueryPartDef({
   defaultParams: ['#A', '15m', 'now', 'avg'],
 });
 
-var conditionTypes = [{ text: '查询', value: 'query' }];
+const conditionTypes = [{ text: '查询', value: 'query' }];
 
-var alertStateSortScore = {
+const alertStateSortScore = {
   alerting: 1,
   no_data: 2,
   pending: 3,
@@ -25,7 +25,7 @@ var alertStateSortScore = {
   paused: 5,
 };
 
-var evalFunctions = [
+const evalFunctions = [
   { text: '高于', value: 'gt' },
   { text: '低于', value: 'lt' },
   { text: '超出范围', value: 'outside_range' },
@@ -33,9 +33,9 @@ var evalFunctions = [
   { text: '缺省值', value: 'no_value' },
 ];
 
-var evalOperators = [{ text: 'OR', value: 'or' }, { text: 'AND', value: 'and' }];
+const evalOperators = [{ text: 'OR', value: 'or' }, { text: 'AND', value: 'and' }];
 
-var reducerTypes = [
+const reducerTypes = [
   { text: 'avg()', value: 'avg' },
   { text: 'min()', value: 'min' },
   { text: 'max()', value: 'max' },
@@ -48,17 +48,17 @@ var reducerTypes = [
   { text: 'count_non_null()', value: 'count_non_null' },
 ];
 
-var noDataModes = [
+const noDataModes = [
   { text: '报警', value: 'alerting' },
   { text: '缺值', value: 'no_data' },
   { text: '保持状态', value: 'keep_state' },
   { text: '安全', value: 'ok' },
 ];
 
-var executionErrorModes = [{ text: '报警', value: 'alerting' }, { text: 'Keep Last State', value: 'keep_state' }];
+const executionErrorModes = [{ text: '报警', value: 'alerting' }, { text: 'Keep Last State', value: 'keep_state' }];
 
 function createReducerPart(model) {
-  var def = new QueryPartDef({ type: model.type, defaultParams: [] });
+  const def = new QueryPartDef({ type: model.type, defaultParams: [] });
   return new QueryPart(model, def);
 }
 
