@@ -10,38 +10,42 @@
       </a>
     </div>
 
-    <table class="filter-table">
+    <table class="filter-table filter-table--hover">
       <thead>
-        <th>
-          <strong>名称</strong>
-        </th>
-        <th>
-          <strong>初始url</strong>
-        </th>
+        <th><strong>名称</strong></th>
+        <th style="width: 100px"></th>
         <th style="width: 78px"></th>
-        <th style="width: 78px"></th>
-        <th style="width: 25px"></th>
       </thead>
       <tr ng-repeat="playlist in ctrl.playlists">
-        <td>
+        <td class="link-td">
           <a href="playlists/edit/{{playlist.id}}">{{playlist.name}}</a>
         </td>
-        <td>
-          <a href="playlists/play/{{playlist.id}}">playlists/play/{{playlist.id}}</a>
+        <td class="dropdown">
+          <button class="btn btn-inverse btn-small" data-toggle="dropdown">
+            播放播单
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+            <li>
+              <a href="{{playlist.startUrl}}">
+                <i class="fa fa-play"></i> 普通模式</span>
+              </a>
+              <a href="{{playlist.startUrl}}?kiosk=tv">
+                <i class="fa fa-play"></i> TV模式</span>
+              </a>
+              <a href="{{playlist.startUrl}}?kiosk=tv&autofitpanels">
+                <i class="fa fa-play"></i> TV模式 <span class="muted">(使用自适应面板)</span>
+              </a>
+              <a href="{{playlist.startUrl}}?kiosk">
+                <i class="fa fa-play"></i> Kiosk模式</span>
+              </a>
+              <a ng-href="{{playlist.startUrl}}?kiosk&autofitpanels">
+                <i class="fa fa-play"></i> Kiosk模式 <span class="muted">(使用自适应面板)</span>
+              </a>
+            </li>
+          </ul>
         </td>
-        <td class="text-center">
-          <a href="playlists/play/{{playlist.id}}" class="btn btn-inverse btn-small">
-            <i class="fa fa-play"></i>
-            播放
-          </a>
-        </td>
-        <td class="text-right">
-          <a href="playlists/edit/{{playlist.id}}" class="btn btn-inverse btn-small">
-            <i class="fa fa-edit"></i>
-            编辑
-          </a>
-        </td>
-        <td class="text-right">
+        <td  class="text-right">
           <a ng-click="ctrl.removePlaylist(playlist)" class="btn btn-danger btn-small">
             <i class="fa fa-remove"></i>
           </a>
@@ -49,18 +53,16 @@
       </tr>
     </table>
   </div>
-
   <div ng-if="ctrl.playlists.length === 0">
     <empty-list-cta model="{
       title: '暂无创建的播单',
       buttonIcon: 'fa fa-plus',
       buttonLink: 'playlists/create',
       buttonTitle: ' 创建播单',
-      proTip: '你可以创建Kiosk模式的播单.',
+      proTip: '使用播单代替TVs控制.',
       proTipLink: 'http://docs.grafana.org/reference/playlist/',
       proTipLinkTitle: '获得更多',
       proTipTarget: '_blank'
     }" />
   </div>
-
 </div>

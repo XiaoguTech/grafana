@@ -144,7 +144,7 @@ export class DashboardCtrl implements PanelContainer {
   removePanel(panel: PanelModel, ask: boolean) {
     // confirm deletion
     if (ask !== false) {
-      var text2, confirmText;
+      let text2, confirmText;
 
       if (panel.alert) {
         text2 = '面板包含报警规则，删除面板也将删除报警规则';

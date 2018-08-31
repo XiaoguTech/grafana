@@ -1,9 +1,9 @@
 <page-header model="ctrl.navModel"></page-header>
 
-<div class="page-container page-body" ng-form="playlistEditForm">
+<div class="page-container page-body" ng-form="ctrl.playlistEditForm">
 
-  <h3 class="page-sub-heading" ng-hide="ctrl.isNew">编辑播放列表</h3>
-  <h3 class="page-sub-heading" ng-show="ctrl.isNew">添加播放列表</h3>
+	<h3 class="page-sub-heading" ng-hide="ctrl.isNew">编辑播放列表</h3>
+	<h3 class="page-sub-heading" ng-show="ctrl.isNew">添加播放列表</h3>
 
 	<p class="playlist-description">播放列表循环展示预先选择的仪表盘列表。其可以用来构建态势感知，或者向你的团队和访问者展示你的数据指标。</p>
 
@@ -20,79 +20,71 @@
 
 	<div class="gf-form-group">
 		<h3 class="page-headering">仪表盘</h3>
+
+		<table class="filter-table playlist-available-list">
+			<tr ng-repeat="playlistItem in ctrl.playlistItems">
+				<td ng-if="playlistItem.type === 'dashboard_by_id'">
+					<i class="icon-gf icon-gf-dashboard"></i>&nbsp;&nbsp;{{playlistItem.title}}
+				</td>
+				<td ng-if="playlistItem.type === 'dashboard_by_tag'">
+					<a class="search-result-tag label label-tag" tag-color-from-name="playlistItem.title">
+						<i class="fa fa-tag"></i>
+						<span>{{playlistItem.title}}</span>
+					</a>
+				</td>
+
+				<td class="selected-playlistitem-settings">
+					<button class="btn btn-inverse btn-mini" ng-hide="$first" ng-click="ctrl.movePlaylistItemUp(playlistItem)">
+						<i class="fa fa-arrow-up"></i>
+					</button>
+					<button class="btn btn-inverse btn-mini" ng-hide="$last" ng-click="ctrl.movePlaylistItemDown(playlistItem)">
+						<i class="fa fa-arrow-down"></i>
+					</button>
+					<button class="btn btn-inverse btn-mini" ng-click="ctrl.removePlaylistItem(playlistItem)">
+						<i class="fa fa-remove"></i>
+					</button>
+				</td>
+			</tr>
+			<tr ng-if="ctrl.playlistItems.length === 0">
+				<td><em>播单为空，请添加以下仪表盘.</em></td>
+			</tr>
+		</table>
 	</div>
 
-	<div class="row">
-		<div class="col-lg-6">
-			<div class="playlist-search-containerwrapper">
-				<div class="max-width-32">
-					<h5 class="page-headering playlist-column-header">可用</h5>
-					<div style="">
-						<playlist-search class="playlist-search-container" search-started="ctrl.searchStarted(promise)"></playlist-search>
-					</div>
-				</div>
-			</div>
+	<div class="gf-form-group">
+		<h3 class="page-headering">添加仪表盘</h3>
+		<playlist-search class="playlist-search-container" search-started="ctrl.searchStarted(promise)"></playlist-search>
 
-			<div ng-if="ctrl.filteredDashboards.length > 0">
-				<table class="filter-table playlist-available-list">
-					<tr ng-repeat="playlistItem in ctrl.filteredDashboards">
-						<td>
-							<i class="icon-gf icon-gf-dashboard"></i>
-							&nbsp;&nbsp;{{playlistItem.title}}
-							<i class="fa fa-star" ng-show="playlistItem.isStarred"></i>
-						</td>
-						<td class="add-dashboard">
-							<button class="btn btn-inverse btn-mini pull-right" ng-click="ctrl.addPlaylistItem(playlistItem)">
-								<i class="fa fa-plus"></i>
-								添加到播放列表
-							</button>
-						</td>
-					</tr>
-				</table>
-			</div>
-			<div class="playlist-search-results-container" ng-if="ctrl.filteredTags.length > 0;">
-				<table class="filter-table playlist-available-list">
-					<tr ng-repeat="tag in ctrl.filteredTags">
-						<td>
-							<a class="search-result-tag label label-tag" tag-color-from-name="tag.term">
-								<i class="fa fa-tag"></i>
-								<span>{{tag.term}} &nbsp;({{tag.count}})</span>
-							</a>
-						</td>
-						<td class="add-dashboard">
-							<button class="btn btn-inverse btn-mini pull-right" ng-click="ctrl.addTagPlaylistItem(tag)">
-								<i class="fa fa-plus"></i>
-								添加到播放列表
-							</button>
-						</td>
-					</tr>
-				</table>
-			</div>
-		</div>
-
-		<div class="col-lg-6">
-			<h5 class="page headering playlist-column-header">已选中</h5>
+		<div ng-if="ctrl.filteredDashboards.length > 0">
 			<table class="filter-table playlist-available-list">
-				<tr ng-repeat="playlistItem in ctrl.playlistItems">
-					<td ng-if="playlistItem.type === 'dashboard_by_id'">
-						<i class="icon-gf icon-gf-dashboard"></i>&nbsp;&nbsp;{{playlistItem.title}}
+				<tr ng-repeat="playlistItem in ctrl.filteredDashboards">
+					<td>
+						<i class="icon-gf icon-gf-dashboard"></i>
+						&nbsp;&nbsp;{{playlistItem.title}}
+						<i class="fa fa-star" ng-show="playlistItem.isStarred"></i>
 					</td>
-					<td ng-if="playlistItem.type === 'dashboard_by_tag'">
-						<a class="search-result-tag label label-tag" tag-color-from-name="playlistItem.title">
+					<td class="add-dashboard">
+						<button class="btn btn-inverse btn-mini pull-right" ng-click="ctrl.addPlaylistItem(playlistItem)">
+							<i class="fa fa-plus"></i>
+							添加到播放列表
+						</button>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div class="playlist-search-results-container" ng-if="ctrl.filteredTags.length > 0;">
+			<table class="filter-table playlist-available-list">
+				<tr ng-repeat="tag in ctrl.filteredTags">
+					<td>
+						<a class="search-result-tag label label-tag" tag-color-from-name="tag.term">
 							<i class="fa fa-tag"></i>
-							<span>{{playlistItem.title}}</span>
+							<span>{{tag.term}} &nbsp;({{tag.count}})</span>
 						</a>
 					</td>
-
-					<td class="selected-playlistitem-settings">
-						<button class="btn btn-inverse btn-mini" ng-hide="$first" ng-click="ctrl.movePlaylistItemUp(playlistItem)">
-							<i class="fa fa-arrow-up"></i>
-						</button>
-						<button class="btn btn-inverse btn-mini" ng-hide="$last" ng-click="ctrl.movePlaylistItemDown(playlistItem)">
-							<i class="fa fa-arrow-down"></i>
-						</button>
-						<button class="btn btn-inverse btn-mini" ng-click="ctrl.removePlaylistItem(playlistItem)">
-							<i class="fa fa-remove"></i>
+					<td class="add-dashboard">
+						<button class="btn btn-inverse btn-mini pull-right" ng-click="ctrl.addTagPlaylistItem(tag)">
+							<i class="fa fa-plus"></i>
+							添加到播放列表
 						</button>
 					</td>
 				</tr>
@@ -103,12 +95,8 @@
 	<div class="clearfix"></div>
 
 	<div class="gf-form-button-row">
-		<a class="btn btn-success " ng-show="ctrl.isNew"
-			ng-disabled="ctrl.playlistEditForm.$invalid || ctrl.isPlaylistEmpty()"
-			ng-click="ctrl.savePlaylist(ctrl.playlist, ctrl.playlistItems)">添加播放列表</a>
-		<a class="btn btn-success" ng-show="!ctrl.isNew()"
-			ng-disabled="ctrl.playlistEditForm.$invalid || ctrl.isPlaylistEmpty()"
-			ng-click="ctrl.savePlaylist(ctrl.playlist, ctrl.playlistItems)">保存</a>
+		<a class="btn btn-success" ng-show="ctrl.isNew" ng-disabled="ctrl.playlistEditForm.$invalid || ctrl.isPlaylistEmpty()" ng-click="ctrl.savePlaylist(ctrl.playlist, ctrl.playlistItems)">添加播放列表</a>
+		<a class="btn btn-success" ng-show="!ctrl.isNew" ng-disabled="ctrl.playlistEditForm.$invalid || ctrl.isPlaylistEmpty()" ng-click="ctrl.savePlaylist(ctrl.playlist, ctrl.playlistItems)">保存</a>
 		<a class="btn-text" ng-click="ctrl.backToList()">取消</a>
 	</div>
 </div>

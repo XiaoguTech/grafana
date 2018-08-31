@@ -43,7 +43,7 @@ export class BackendSrv {
       return;
     }
 
-    var data = err.data || { message: '未知错误' };
+    let data = err.data || { message: '未知错误' };
     if (_.isString(data)) {
       data = { message: data };
     }
