@@ -2613,3 +2613,50 @@ t=2018-08-06T19:54:59+0800 lvl=info msg="Stopped AlertingService" logger=server 
 t=2018-08-06T19:54:59+0800 lvl=info msg="Stopped NotificationService" logger=server reason="context canceled"
 t=2018-08-06T19:54:59+0800 lvl=info msg="Stopped HTTPServer" logger=server reason=nil
 t=2018-08-06T19:54:59+0800 lvl=eror msg="Server shutdown" logger=server reason="System signal: interrupt"
+t=2018-09-06T09:01:44+0800 lvl=info msg="Starting Grafana" logger=server version=5.3.0-pre1 commit=c11202cea compiled=2018-09-02T10:08:45+0800
+t=2018-09-06T09:01:44+0800 lvl=info msg="Config loaded from" logger=settings file=D:\\GoProjects\\src\\github.com\\grafana\\grafana/conf/defaults.ini
+t=2018-09-06T09:01:44+0800 lvl=info msg="Config overridden from command line" logger=settings arg="app_mode=development"
+t=2018-09-06T09:01:44+0800 lvl=info msg="Path Home" logger=settings path=D:\\GoProjects\\src\\github.com\\grafana\\grafana
+t=2018-09-06T09:01:44+0800 lvl=info msg="Path Data" logger=settings path=D:\\GoProjects\\src\\github.com\\grafana\\grafana\\data
+t=2018-09-06T09:01:44+0800 lvl=info msg="Path Logs" logger=settings path=D:\\GoProjects\\src\\github.com\\grafana\\grafana\\data\\log
+t=2018-09-06T09:01:44+0800 lvl=info msg="Path Plugins" logger=settings path=D:\\GoProjects\\src\\github.com\\grafana\\grafana\\data\\plugins
+t=2018-09-06T09:01:44+0800 lvl=info msg="Path Provisioning" logger=settings path=D:\\GoProjects\\src\\github.com\\grafana\\grafana\\conf\\provisioning
+t=2018-09-06T09:01:44+0800 lvl=info msg="App mode development" logger=settings
+t=2018-09-06T09:01:44+0800 lvl=info msg="Initializing SqlStore" logger=server
+t=2018-09-06T09:01:44+0800 lvl=info msg="Connecting to DB" logger=sqlstore dbtype=sqlite3
+t=2018-09-06T09:01:44+0800 lvl=info msg="Starting DB migration" logger=migrator
+t=2018-09-06T09:01:44+0800 lvl=info msg="Executing migration" logger=migrator id="Add missing user data"
+t=2018-09-06T09:01:44+0800 lvl=info msg="Initializing HTTPServer" logger=server
+t=2018-09-06T09:01:44+0800 lvl=info msg="Initializing SearchService" logger=server
+t=2018-09-06T09:01:44+0800 lvl=info msg="Initializing PluginManager" logger=server
+t=2018-09-06T09:01:44+0800 lvl=info msg="Starting plugin search" logger=plugins
+t=2018-09-06T09:01:44+0800 lvl=info msg="Plugin dir created" logger=plugins dir=D:\\GoProjects\\src\\github.com\\grafana\\grafana\\data\\plugins
+t=2018-09-06T09:01:44+0800 lvl=info msg="Initializing InternalMetricsService" logger=server
+t=2018-09-06T09:01:44+0800 lvl=info msg="Initializing AlertingService" logger=server
+t=2018-09-06T09:01:44+0800 lvl=info msg="Initializing CleanUpService" logger=server
+t=2018-09-06T09:01:44+0800 lvl=info msg="Initializing NotificationService" logger=server
+t=2018-09-06T09:01:44+0800 lvl=info msg="Initializing ProvisioningService" logger=server
+t=2018-09-06T09:01:44+0800 lvl=info msg="Initializing RenderingService" logger=server
+t=2018-09-06T09:01:44+0800 lvl=info msg="Initializing TracingService" logger=server
+t=2018-09-06T09:01:44+0800 lvl=info msg="Initializing Stream Manager"
+t=2018-09-06T09:01:44+0800 lvl=info msg="HTTP Server Listen" logger=http.server address=0.0.0.0:4444 protocol=http subUrl= socket=
+t=2018-09-06T09:02:01+0800 lvl=info msg="Alert Rule returned no data" logger=alerting.evalContext ruleId=1 name=高温警报 changing state to=no_data
+t=2018-09-06T09:03:01+0800 lvl=info msg="Alert Rule returned no data" logger=alerting.evalContext ruleId=1 name=高温警报 changing state to=no_data
+t=2018-09-06T09:04:01+0800 lvl=info msg="Alert Rule returned no data" logger=alerting.evalContext ruleId=1 name=高温警报 changing state to=no_data
+t=2018-09-06T09:04:21+0800 lvl=info msg="Request Completed" logger=context userId=1 orgId=1 uname=admin method=GET path=/logout status=302 remote_addr=[::1] time_ms=1 size=29 referer="http://localhost:4444/d/nH9x09Fmk/ban-gong-shi-wen-du?refresh=1m&orgId=1"
+t=2018-09-06T09:05:01+0800 lvl=info msg="Alert Rule returned no data" logger=alerting.evalContext ruleId=1 name=高温警报 changing state to=no_data
+t=2018-09-06T09:06:01+0800 lvl=info msg="Alert Rule returned no data" logger=alerting.evalContext ruleId=1 name=高温警报 changing state to=no_data
+t=2018-09-06T09:07:01+0800 lvl=info msg="Alert Rule returned no data" logger=alerting.evalContext ruleId=1 name=高温警报 changing state to=no_data
+t=2018-09-06T09:08:01+0800 lvl=info msg="Alert Rule returned no data" logger=alerting.evalContext ruleId=1 name=高温警报 changing state to=no_data
+t=2018-09-06T09:08:35+0800 lvl=info msg="Shutdown started" logger=server reason="System signal: interrupt"
+t=2018-09-06T09:08:35+0800 lvl=info msg="Stopped CleanUpService" logger=server reason="context canceled"
+t=2018-09-06T09:08:35+0800 lvl=info msg="Stopped Stream Manager"
+t=2018-09-06T09:08:35+0800 lvl=info msg="Stopped AlertingService" logger=server reason="context canceled"
+t=2018-09-06T09:08:35+0800 lvl=info msg="Stopped RenderingService" logger=server reason=nil
+t=2018-09-06T09:08:35+0800 lvl=info msg="Stopped ProvisioningService" logger=server reason="context canceled"
+t=2018-09-06T09:08:35+0800 lvl=info msg="Stopped InternalMetricsService" logger=server reason="context canceled"
+t=2018-09-06T09:08:35+0800 lvl=info msg="Stopped TracingService" logger=server reason=nil
+t=2018-09-06T09:08:35+0800 lvl=info msg="Stopped PluginManager" logger=server reason="context canceled"
+t=2018-09-06T09:08:35+0800 lvl=info msg="Stopped NotificationService" logger=server reason="context canceled"
+t=2018-09-06T09:08:35+0800 lvl=info msg="Stopped HTTPServer" logger=server reason=nil
+t=2018-09-06T09:08:35+0800 lvl=eror msg="Server shutdown" logger=server reason="System signal: interrupt"
