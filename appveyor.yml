@@ -6,8 +6,13 @@ clone_folder: C:\Users\ZoKing\Documents\GoProjects\src\github.com\grafana\grafan
 
 environment:
   nodejs_version: "6"
+<<<<<<< HEAD
   GOPATH: C:\Users\ZoKing\Documents\GoProjects
   GOVERSION: 1.10
+=======
+  GOPATH: C:\gopath
+  GOVERSION: 1.11
+>>>>>>> d76dad86c801aef31c7811e0fdcf1bcb3fcbe547
 
 install:
   - rmdir c:\go /s /q

@@ -6,11 +6,11 @@ import TableModel from '../../../core/table_model';
 const transformers = {};
 
 transformers['timeseries_to_rows'] = {
-  description: '时间序列转到行',
-  getColumns: function() {
+  description: 'Time series to rows',
+  getColumns: () => {
     return [];
   },
-  transform: function(data, panel, model) {
+  transform: (data, panel, model) => {
     model.columns = [{ text: 'Time', type: 'date' }, { text: 'Metric' }, { text: 'Value' }];
 
     for (let i = 0; i < data.length; i++) {
@@ -24,12 +24,12 @@ transformers['timeseries_to_rows'] = {
 };
 
 transformers['timeseries_to_columns'] = {
-  description: '时间序列转到列',
-  getColumns: function() {
+  description: 'Time series to columns',
+  getColumns: () => {
     return [];
   },
-  transform: function(data, panel, model) {
-    model.columns.push({ text: '日期', type: 'date' });
+  transform: (data, panel, model) => {
+    model.columns.push({ text: 'Time', type: 'date' });
 
     // group by time
     const points = {};
@@ -66,8 +66,8 @@ transformers['timeseries_to_columns'] = {
 };
 
 transformers['timeseries_aggregations'] = {
-  description: '时间序列聚合',
-  getColumns: function() {
+  description: 'Time series aggregations',
+  getColumns: () => {
     return [
       { text: 'Avg', value: 'avg' },
       { text: 'Min', value: 'min' },
@@ -77,7 +77,7 @@ transformers['timeseries_aggregations'] = {
       { text: 'Count', value: 'count' },
     ];
   },
-  transform: function(data, panel, model) {
+  transform: (data, panel, model) => {
     let i, y;
     model.columns.push({ text: 'Metric' });
 
@@ -104,15 +104,15 @@ transformers['timeseries_aggregations'] = {
 };
 
 transformers['annotations'] = {
-  description: '注释',
-  getColumns: function() {
+  description: 'Annotations',
+  getColumns: () => {
     return [];
   },
-  transform: function(data, panel, model) {
-    model.columns.push({ text: '日期', type: 'date' });
-    model.columns.push({ text: '标题' });
-    model.columns.push({ text: '文本' });
-    model.columns.push({ text: '标签' });
+  transform: (data, panel, model) => {
+    model.columns.push({ text: 'Time', type: 'date' });
+    model.columns.push({ text: 'Title' });
+    model.columns.push({ text: 'Text' });
+    model.columns.push({ text: 'Tags' });
 
     if (!data || !data.annotations || data.annotations.length === 0) {
       return;
@@ -126,8 +126,8 @@ transformers['annotations'] = {
 };
 
 transformers['table'] = {
-  description: '表格',
-  getColumns: function(data) {
+  description: 'Table',
+  getColumns: data => {
     if (!data || data.length === 0) {
       return [];
     }
@@ -154,7 +154,7 @@ transformers['table'] = {
 
     return columns;
   },
-  transform: function(data, panel, model) {
+  transform: (data, panel, model) => {
     if (!data || data.length === 0) {
       return;
     }
@@ -263,8 +263,8 @@ transformers['table'] = {
 };
 
 transformers['json'] = {
-  description: 'JSON 数据',
-  getColumns: function(data) {
+  description: 'JSON Data',
+  getColumns: data => {
     if (!data || data.length === 0) {
       return [];
     }
@@ -287,11 +287,11 @@ transformers['json'] = {
       }
     }
 
-    return _.map(names, function(value, key) {
+    return _.map(names, (value, key) => {
       return { text: key, value: key };
     });
   },
-  transform: function(data, panel, model) {
+  transform: (data, panel, model) => {
     let i, y, z;
 
     for (const column of panel.columns) {

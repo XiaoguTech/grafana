@@ -8,7 +8,7 @@
 # RUN go run build.go build
 # EXPOSE 3000
 # Official Golang build container
-FROM golang:1.10
+FROM golang:1.11
 
 WORKDIR $GOPATH/src/github.com/grafana/grafana
 
