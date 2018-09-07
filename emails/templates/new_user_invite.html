@@ -1,6 +1,6 @@
 <!-- This email is sent when user who does not already exist in Grafana is added to an organization -->
 
-[[Subject .Subject "[[.InvitedBy]] has invited you to join Grafana"]]
+[[Subject .Subject "[[.InvitedBy]] 已邀请你加入 Grafana"]]
 
 <table class="row">
 	<tr>
@@ -9,7 +9,7 @@
 			<table class="twelve columns">
 				<tr>
 					<td>
-						<h4 class="center">You're invited to join [[.OrgName]]</h4>
+						<h4 class="center">你被邀请加入 [[.OrgName]]</h4>
 					</td>
 					<td class="expander"></td>
 				</tr>
@@ -25,22 +25,22 @@
 			<table class="twelve columns">
 				<tr>
 					<td class="center">
-						<p>You've been invited to join the <b>[[.OrgName]]</b> organization by <b>[[.InvitedBy]]</b>. To accept your invitation and join the team, please click the link below:</p>
+						<p> <b>[[.InvitedBy]]</b> 邀请你加入组织<b>[[.OrgName]]</b>中. 通过点击下方链接接受邀请并加入团队:</p>
 					</td>
 				</tr>
-				<tr>				
+				<tr>
 					<td class="center">
 	                    <table class="better-button" align="center" border="0" cellspacing="0" cellpadding="0">
 	                    	<tr>
-	                          <td align="center" class="better-button" bgcolor="#ff8f2b"><a href="[[.LinkUrl]]" target="_blank">Accept Invitation</a></td>
+	                          <td align="center" class="better-button" bgcolor="#ff8f2b"><a href="[[.LinkUrl]]" target="_blank">接受邀请</a></td>
 	                        </tr>
 	                    </table>
 					</td>
 				</tr>
 				<tr>
 					<td class="center">
-						<p>You can also copy/paste this link into your browser directly: <a href="[[.LinkUrl]]">[[.LinkUrl]]</a></p>
-					</td>								
+						<p>你也可以复制/粘贴链接: <a href="[[.LinkUrl]]">[[.LinkUrl]]</a>到浏览器中打开</p>
+					</td>
 					<td class="expander"></td>
 				</tr>
 			</table>
