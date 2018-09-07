@@ -1,5 +1,9 @@
 # 5.3.0 (unreleased)
 
+### Minor
+
+* **Alerting**: Link to view full size image in Microsoft Teams alert notifier [#13121](https://github.com/grafana/grafana/issues/13121), thx [@holiiveira](https://github.com/holiiveira)
+
 # 5.3.0-beta1 (2018-09-06)
 
 ### New Major Features
@@ -81,7 +85,7 @@
 
 ### New experimental features
 
-These are new features that's still being worked on and are in an experimental phase. We incourage users to try these out and provide any feedback in related issue.
+These are new features that's still being worked on and are in an experimental phase. We encourage users to try these out and provide any feedback in related issue.
 
 * **Dashboard**: Auto fit dashboard panels to optimize space used for current TV / Monitor [#12768](https://github.com/grafana/grafana/issues/12768)
 
