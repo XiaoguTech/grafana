@@ -2,11 +2,11 @@ import { types, getEnv, flow } from 'mobx-state-tree';
 import { PermissionsStoreItem } from './PermissionsStoreItem';
 
 export const permissionOptions = [
-  { value: 1, label: 'View', description: '可以查看仪表盘。' },
-  { value: 2, label: 'Edit', description: '可以添加，编辑，删除仪表盘。' },
+  { value: 1, label: '查看', description: '可以查看仪表盘。' },
+  { value: 2, label: '编辑', description: '可以添加，编辑，删除仪表盘。' },
   {
     value: 4,
-    label: 'Admin',
+    label: '管理员',
     description: '可以添加/移除权限并添加，编辑，删除仪表盘。',
   },
 ];
