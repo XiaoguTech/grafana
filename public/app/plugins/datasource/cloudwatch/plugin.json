@@ -8,7 +8,7 @@
   "annotations": true,
 
   "info": {
-    "description": "Cloudwatch Data Source for Grafana",
+    "description": "Grafana的CloudWatch数据源",
     "author": {
       "name": "Grafana Project",
       "url": "https://grafana.com"
