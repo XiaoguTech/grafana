@@ -16,10 +16,10 @@ function convertToAlertRule(rule, state): AlertRule {
 
   if (rule.state !== 'paused') {
     if (rule.executionError) {
-      rule.info = 'Execution Error: ' + rule.executionError;
+      rule.info = '执行错误: ' + rule.executionError;
     }
     if (rule.evalData && rule.evalData.noData) {
-      rule.info = 'Query returned no data';
+      rule.info = '查询未返回任何数据';
     }
   }
 

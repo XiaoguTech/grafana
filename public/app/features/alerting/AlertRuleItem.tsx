@@ -52,12 +52,12 @@ class AlertRuleItem extends PureComponent<Props> {
         <div className="alert-rule-item__actions">
           <button
             className="btn btn-small btn-inverse alert-list__btn width-2"
-            title="Pausing an alert rule prevents it from executing"
+            title="暂停此告警规则以阻止其执行"
             onClick={onTogglePause}
           >
             <i className={stateClass} />
           </button>
-          <a className="btn btn-small btn-inverse alert-list__btn width-2" href={ruleUrl} title="Edit alert rule">
+          <a className="btn btn-small btn-inverse alert-list__btn width-2" href={ruleUrl} title="编辑此告警规则">
             <i className="icon-gf icon-gf-settings" />
           </a>
         </div>

@@ -63,8 +63,8 @@ const template = `
   <h5>阈值</h5>
   <p class="muted" ng-show="ctrl.disabled">
     <strong>已禁用</strong>查看阈值选项
-    查看报警选项卡更新阈值。 <br>
-    要重新启用阈值，必须从该面板中删除报警规则。
+    查看告警选项卡更新阈值。 <br>
+    要重新启用阈值，必须从该面板中删除告警规则。
   </p>
   <div ng-class="{'thresholds-form-disabled': ctrl.disabled}">
     <div class="gf-form-inline" ng-repeat="threshold in ctrl.panel.thresholds">

@@ -49,13 +49,13 @@ const reducerTypes = [
 ];
 
 const noDataModes = [
-  { text: '报警', value: 'alerting' },
+  { text: '告警', value: 'alerting' },
   { text: '缺值', value: 'no_data' },
   { text: '保持状态', value: 'keep_state' },
   { text: '安全', value: 'ok' },
 ];
 
-const executionErrorModes = [{ text: '报警', value: 'alerting' }, { text: 'Keep Last State', value: 'keep_state' }];
+const executionErrorModes = [{ text: '告警', value: 'alerting' }, { text: 'Keep Last State', value: 'keep_state' }];
 
 function createReducerPart(model) {
   const def = new QueryPartDef({ type: model.type, defaultParams: [] });
@@ -73,7 +73,7 @@ function getStateDisplayModel(state) {
     }
     case 'alerting': {
       return {
-        text: '报警',
+        text: '告警',
         iconClass: 'icon-gf icon-gf-critical',
         stateClass: 'alert-state-critical',
       };

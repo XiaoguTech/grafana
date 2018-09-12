@@ -188,7 +188,7 @@ export class SettingsCtrl {
 
     if (alerts > 0) {
       confirmText = '删除';
-      text2 = `此仪表盘包含 ${alerts} 报警。 删除此仪表板也会删除这些报警`;
+      text2 = `此仪表盘包含 ${alerts} 告警。 删除此仪表盘也会删除这些告警`;
     }
 
     appEvents.emit('confirm-modal', {

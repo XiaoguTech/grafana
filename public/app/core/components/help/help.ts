@@ -10,7 +10,7 @@ export class HelpCtrl {
     this.tabIndex = 0;
     this.shortcuts = {
       '全局': [
-        { keys: ['g', 'h'], description: '转到主页仪表板' },
+        { keys: ['g', 'h'], description: '转到主页仪表盘' },
         { keys: ['g', 'p'], description: '转到个人资料页' },
         { keys: ['s', 'o'], description: '打开搜索' },
         { keys: ['s', 's'], description: '用收藏过滤器打开搜索' },
@@ -18,9 +18,9 @@ export class HelpCtrl {
         { keys: ['esc'], description: '退出编辑/设置视图' },
       ],
       Dashboard: [
-        { keys: ['mod+s'], description: '保存仪表板' },
+        { keys: ['mod+s'], description: '保存仪表盘' },
         { keys: ['d', 'r'], description: '刷新所有面板' },
-        { keys: ['d', 's'], description: '仪表板设置' },
+        { keys: ['d', 's'], description: '仪表盘设置' },
         { keys: ['d', 'v'], description: '切换 活动/查看模式' },
         { keys: ['d', 'k'], description: '切换 全屏模式(隐藏顶部导航)' },
         { keys: ['d', 'E'], description: '展开所有行' },

@@ -170,7 +170,7 @@ export class AlertTabCtrl {
     alert.handler = alert.handler || 1;
     alert.notifications = alert.notifications || [];
 
-    const defaultName = this.panel.title + ' 报警';
+    const defaultName = this.panel.title + ' 告警';
     alert.name = alert.name || defaultName;
 
     this.conditionModels = _.reduce(
@@ -335,8 +335,8 @@ export class AlertTabCtrl {
 
   delete() {
     appEvents.emit('confirm-modal', {
-      title: '删除报警',
-      text: '确定希望删除这条报警规则?',
+      title: '删除告警',
+      text: '确定希望删除这条告警规则?',
       text2: '需要保存仪表盘使删除生效',
       icon: 'fa-trash',
       yesText: '删除',
@@ -385,7 +385,7 @@ export class AlertTabCtrl {
   clearHistory() {
     appEvents.emit('confirm-modal', {
       title: '删除历史状态',
-      text: '您确定要删除此警报的所有历史状态和注释吗?',
+      text: '您确定要删除此告警的所有历史状态和注释吗?',
       icon: 'fa-trash',
       yesText: '是',
       onConfirm: () => {

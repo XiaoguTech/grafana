@@ -120,7 +120,7 @@ class AlertListPanel extends PanelCtrl {
         return al;
       });
 
-      this.noAlertsMessage = this.alertHistory.length === 0 ? '近期暂无报警状态变更' : '';
+      this.noAlertsMessage = this.alertHistory.length === 0 ? '近期暂无告警状态变更' : '';
 
       return this.alertHistory;
     });
@@ -164,7 +164,7 @@ class AlertListPanel extends PanelCtrl {
       if (this.currentAlerts.length > this.panel.limit) {
         this.currentAlerts = this.currentAlerts.slice(0, this.panel.limit);
       }
-      this.noAlertsMessage = this.currentAlerts.length === 0 ? '没有警报' : '';
+      this.noAlertsMessage = this.currentAlerts.length === 0 ? '没有告警' : '';
 
       return this.currentAlerts;
     });

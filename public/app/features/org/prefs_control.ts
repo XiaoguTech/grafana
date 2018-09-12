@@ -56,7 +56,7 @@ const template = `
     <span class="gf-form-label width-11">
       主页仪表盘
       <info-popover mode="right-normal">
-        找不到你想要的仪表板？ 首先加注星标收藏，然后它将出现在此下拉框中。
+        找不到你想要的仪表盘？ 首先加注星标收藏，然后它将出现在此下拉框中。
       </info-popover>
     </span>
     <dashboard-selector class="gf-form-select-wrapper max-width-20" model="ctrl.prefs.homeDashboardId">

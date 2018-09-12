@@ -139,7 +139,7 @@ class GraphCtrl extends MetricsPanelCtrl {
     this.addEditorTab('展示', 'public/app/plugins/panel/graph/tab_display.html', 4);
 
     if (config.alertingEnabled) {
-      this.addEditorTab('报警', alertTab, 5);
+      this.addEditorTab('告警', alertTab, 5);
     }
 
     this.subTabIndex = 0;

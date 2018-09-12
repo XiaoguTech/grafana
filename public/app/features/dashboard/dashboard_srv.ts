@@ -29,8 +29,8 @@ export class DashboardSrv {
 
       this.$rootScope.appEvent('confirm-modal', {
         title: '冲突',
-        text: '其他人已更新此仪表板。',
-        text2: '你还想保存这个仪表板吗?',
+        text: '其他人已更新此仪表盘。',
+        text2: '你还想保存这个仪表盘吗?',
         yesText: '保存并覆盖',
         icon: 'fa-warning',
         onConfirm: () => {
@@ -44,8 +44,8 @@ export class DashboardSrv {
 
       this.$rootScope.appEvent('confirm-modal', {
         title: '冲突',
-        text: '所选文件夹中已存在相同名称的仪表板。',
-        text2: '你还想保存这个仪表板吗?',
+        text: '所选文件夹中已存在相同名称的仪表盘。',
+        text2: '你还想保存这个仪表盘吗?',
         yesText: '保存并覆盖',
         icon: 'fa-warning',
         onConfirm: () => {
@@ -58,7 +58,7 @@ export class DashboardSrv {
       err.isHandled = true;
 
       this.$rootScope.appEvent('confirm-modal', {
-        title: '插件仪表板',
+        title: '插件仪表盘',
         text: err.data.message,
         text2: '更新插件时，您的更改将丢失。 使用“另存为”创建自定义版本。',
         yesText: '覆盖',

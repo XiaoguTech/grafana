@@ -108,7 +108,7 @@ export class DashboardModel {
 
     this.annotations.list.unshift({
       datasource: '-- Grafana --',
-      name: '注释 & 报警',
+      name: '注释 & 告警',
       type: 'dashboard',
       iconColor: DEFAULT_ANNOTATION_COLOR,
       enable: true,

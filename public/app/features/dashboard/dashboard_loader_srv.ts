@@ -49,7 +49,7 @@ export class DashboardLoaderSrv {
         .getDashboardByUid(uid)
         .then(result => {
           if (result.meta.isFolder) {
-            this.$rootScope.appEvent('alert-error', ['未找到仪表板']);
+            this.$rootScope.appEvent('alert-error', ['未找到仪表盘']);
             throw new Error('Dashboard not found');
           }
           return result;

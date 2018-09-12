@@ -14,7 +14,7 @@ export class VariableEditorCtrl {
 
     $scope.refreshOptions = [
       { value: 0, text: '从不' },
-      { value: 1, text: '仪表板加载时' },
+      { value: 1, text: '仪表盘加载时' },
       { value: 2, text: '时间区间改变时' },
     ];
 

@@ -147,7 +147,7 @@ export class DashboardCtrl implements PanelContainer {
       let text2, confirmText;
 
       if (panel.alert) {
-        text2 = '面板包含报警规则，删除面板也将删除报警规则';
+        text2 = '面板包含告警规则，删除面板也将删除告警规则';
         confirmText = '确认';
       }
 
