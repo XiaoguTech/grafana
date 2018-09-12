@@ -1,7 +1,6 @@
 import _ from 'lodash';
 import { types, getEnv } from 'mobx-state-tree';
 import { NavItem } from './NavItem';
-import { Team } from '../TeamsStore/TeamsStore';
 
 export const NavStore = types
   .model('NavStore', {
@@ -111,45 +110,6 @@ export const NavStore = types
           id: 'datasource-dashboards',
           text: '仪表盘',
           url: `datasources/edit/${ds.id}/dashboards`,
-        });
-      }
-
-      self.main = NavItem.create(main);
-    },
-
-    initTeamPage(team: Team, tab: string, isSyncEnabled: boolean) {
-      const main = {
-        img: team.avatarUrl,
-        id: 'team-' + team.id,
-        subTitle: '管理团队及其设置',
-        url: '',
-        text: team.name,
-        breadcrumbs: [{ title: '团队', url: 'org/teams' }],
-        children: [
-          {
-            active: tab === 'members',
-            icon: 'gicon gicon-team',
-            id: 'team-members',
-            text: '成员',
-            url: `org/teams/edit/${team.id}/members`,
-          },
-          {
-            active: tab === 'settings',
-            icon: 'fa fa-fw fa-sliders',
-            id: 'team-settings',
-            text: '设置',
-            url: `org/teams/edit/${team.id}/settings`,
-          },
-        ],
-      };
-
-      if (isSyncEnabled) {
-        main.children.splice(1, 0, {
-          active: tab === 'groupsync',
-          icon: 'fa fa-fw fa-refresh',
-          id: 'team-settings',
-          text: '同步外部组',
-          url: `org/teams/edit/${team.id}/groupsync`,
         });
       }
 
